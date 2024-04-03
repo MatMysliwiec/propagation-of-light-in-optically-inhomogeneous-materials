@@ -1,0 +1,64 @@
+\indent Z poprzednich rozważań wynika, że zasada wariacyjna Fermata dla promienia świetlnego propagującego się po płaszczyźnie prowadzi do układu dynamicznego opisanego funkcją Lagrange'a:%
+\begin{equation}\label{eq:lagrangian_ds}L=e^{\nu(x,y)}\sqrt{\dot{x}^{2}+\dot{y}^{2}}\,\ud{s}.\end{equation}
+Płaszczyznę taką możemy zrealizować napylając warstwę doskonale odbijającą po obu stronach płaskiej folii o danym rozkładzie współczynnika załamania (granicę ośrodka może też tworzyć bardzo duży gradient współczynnika załamania w kierunku normalnym do płaszczyzny). W przypadku ogólnej powierzchni w przestrzeni, w powyższej funkcji należy w miejsce euklidesowego tensora metrycznego wprowadzić tensor metryczny indukowany na tej powierzchni.
+%
+Powyższy Lagrangian jest jednorodny stopnia $1$ względem prędkości,\footnote{Funkcja $f$ jest jednorodna stopnia $n$ względem swoich  argumentów $u^i$, jeżeli $f(\lambda u^i)=\lambda^n f(u^i)$, dla dowolnego rzeczywistego $\lambda\neq0$. Dla takiej funkcji zachodzi twierdzenie Eulera $u^i\partial_if=nf$.} zatem jest on reparametryzacyjnie inwariantny, to znaczy nie zależy od wyboru parametryzacji wzdłuż krzywej. W dalszej części zakładamy, że krzywą będziemy parametryzować długością łuku $s$ na płaszczyźnie euklidesowej\footnote{Rozdział przygotowany na podstawie materiałów do wykładu z~metod obliczeniowych dla studentów kierunku Fizyka Techniczna PK.}. 
+
+\subsection{Interpretacja czasoprzestrzenna}
+\indent Układ dynamiczny opisany Lagrangianem \eqref{eq:lagrangian_ds} można uważać za model cząstki swobodnej w~ dwuwymiarowej przestrzeni zakrzywionej\footnote{Każda rozmaitość dwuwymiarowa jest lokalnie konforemnie równoważna płaszczyźnie euklidesowej.} zdefiniowanej przez element łuku $\ud{l}$
+\begin{equation}\label{eq:elem_lin}\ud{l}^2=e^{2\nu(x,y)}\br{\ud{x}^2+\ud{y}^2}.\end{equation} Wycałkowany element łuku $\ud{l}$ można traktować jako efektywną głębokość optyczną,~różną od faktycznej długości łuku $s$ toru promienia świetlnego. 
+Na podstawie wcześniejszej interpretacji $\ud{l}=c\,\ud{t}$. Przepisując powyższy element liniowy do postaci
+$$\ud{x}_{\mu}\ud{x}^{\mu}\equiv c^2\ud{t}^2-e^{2\nu(x,y)}\br{\ud{x}^2+\ud{y}^2},$$ dochodzimy do wniosku,~że promienie świetlne w~ośrodku niejednorodnym można zreinterpretować w~języku dynamiki cząstek zerowych (fotonów) w~zakrzywionej $1{+}2$ wymiarowej czasoprzestrzeni statycznej z~globalnym czasem $t$ i hiperpowierzchniami stałego czasu opisanymi metryką przestrzenną \eqref{eq:elem_lin}. Dla powyższej metryki krzywizna  Gaussa\footnote{W przyjętych tu konwencjach znaków $K$ odpowiada krzywiźnie Gaussa,~która dla sfery jednostkowej jest równa 1.} hiperpowierzchni stałego czasu jest równa
+ $$K=-e^{2\nu(x,y)}\br{\frac{\partial^2\nu}{\partial{x}^2}+\frac{\partial^2\nu}{\partial{y}^2}}.$$ Nawiasem mówiąc,~krzywizna omawianej czasoprzestrzeni rozumiana jako skalar Ricciego byłaby dwa razy większa,~jednakże nie można takiej krzywizny rozumieć na sposób grawitacyjny,~gdyż w~grawitacji trójwymiarowej (po raz pierwszy badanej przez A. Staruszkieicza w~roku 1963) z~przyczyn strukturalnych nie mogą istnieć rozciągłe źródła pola grawitacyjnego a jedynie pun\-kto\-we,~a przestrzenie stałego czasu muszą być lokalnie płaskie \cite{AStar1963}. 
+ 
+%\cmmt{Znaleźć takie $\nu$, by krzywizna $K$ była równa stałej $1/a^2$}
+\subsection{Redukcja równań promienia świetlnego}
+\indent Jak wcześniej zauważyliśmy,~omawiany model jest reparametryzacyjnie inwariantny. To oznacza,~że parametr niezależny można wybrać w~sposób dowolny.
+W parametryzacji naturalnej (długością łuku $s$) prędkości nie są niezależne,~zachodzi następujący wiąz dla prędkości $$\dot{x}^2+\dot{y}^2=1.$$ Zatem składowe prędkości w~tej parametryzacji są jednocześnie kosinusami kierunkowymi jednostkowego wektora prędkości. W szczególności kierunek ten opisać można jednoznacznie przez podanie kąta $\varphi$ takiego,~że: $$\dot{y}=\sin{\varphi(s)}, \qquad \dot{x}=\cos\varphi(s).$$
+%
+%$$\left\{\begin{matrix}
+% & \dot{y}=\sin{\varphi(s)} \\ 
+% & \dot{x}=\cos\varphi(s)
+%\end{matrix}\right.$$
+%
+%Parametryzacja kątem wektora stycznego:
+%
+%$$\frac{\dot{y}}{\dot{x}}=\tg{\varphi},$$
+%
+Dla Lagrangianu jednorodnego stopnia $1$ względem prędkości pędy kanoniczne również będą wyznaczone kątem $\varphi$: 
+$$p_x\equiv\frac{\partial L}{\partial \dot{x}}=e^{\nu}\frac{\dot{x}}{\sqrt{\dot{x}^{2}+\dot{y}^{2}}}=e^{\nu}\cos\varphi,\qquad p_y\equiv\frac{\partial L}{\partial \dot{y}}=e^{\nu}\frac{\dot{y}}{\sqrt{\dot{x}^{2}+\dot{y}^{2}}}=e^{\nu}\sin\varphi.$$
+Równania Lagrange'a-Eulera $\dot{p}_x=\partial_xL$ i $\dot{p}_y=\partial_yL$, po obustronnym podzieleniu przez $e^{\nu}$,~przyjmują nastepującą postać
+$$e^{-\nu}\frac{d}{ds}\br{e^{\nu}\cos\varphi}=\nu_{,x}, \qquad e^{-\nu}\frac{d}{ds}\br{e^{\nu}\sin\varphi}=\nu_{,y}.$$
+%$$\frac{d}{ds}\frac{L}{\partial\dot{x}}=\frac{\partial L}{\partial x}, \qquad %\frac{d}{ds}\frac{L}{\partial\dot{y}}=\frac{\partial L}{\partial y}.$$
+Wykonując różniczkowanie $e^{-\nu}\ud{e^{\nu}}/{\ud{s}}$ oraz wykorzystując związek prędkości z~kątem $\varphi$ otrzymujemy $\nu_{,x}\cos\varphi+\nu_{,y}\sin\varphi$ skąd, po uporządkowaniu, wynikają
+%$$\left\{\begin{matrix}
+% & \br{\nu_{,x}\cos\varphi+\nu_{,y}\sin\varphi}\cos\varphi-%\dot{\varphi}\sin{\varphi}=\nu_{,x} \\ 
+% & %\br{\nu_{,x}\cos\varphi+\nu_{,y}\sin\varphi}\sin\varphi+\dot{\varphi}\cos\varp%hi=\nu_{,y}
+%\end{matrix}\right.$$
+%Mnożymy oba równania przez $e^{-\nu}$,otrzymując:
+dwa liniowo zależne równania
+$$\left\{\begin{matrix}
+ & -\nu_{,x}\sin^{2}{\varphi}+\nu_{,y}\sin\varphi\cos\varphi=\dot{\varphi}\sin{\varphi} \\ 
+ & \nu_{,x}\sin\varphi\cos\varphi-\cos^{2}\nu_{,y}=-\dot{\varphi}\cos{\varphi}
+\end{matrix}\right.$$
+dające jedno niezależne równanie $\dot{\varphi}=-\nu_{,x}\sin{\varphi}+\nu_{,y}\cos{\varphi}$, które razem z~wyrażeniami na prędkości daje układ trzech równań pierwszego rzędu postaci
+%
+%$$\left\{\begin{matrix}
+% & -\nu_{,x}\sin{\varphi}+\nu_{,y}\cos{\varphi}=\dot{\varphi} \\ 
+% & -\nu_{,x}\sin\varphi+\nu_{,y}\cos\varphi =\dot{\varphi}
+%\end{matrix}\right.$$
+%
+\begin{equation}\label{eq:zredukowany}
+\left\{\begin{array}{l}
+  \dot{x}=\cos{\varphi} \\ 
+  \dot{y}=\sin{\varphi} \\
+  \dot{\varphi}=\nu_{,y}\cos{\varphi}-\nu_{,x}\sin{\varphi}
+\end{array}\right.
+\end{equation}
+Jest to poszukiwany zredukowany układ równań toru promienia świetlnego.
+
+\subsection{Interpretacja geometryczna zredukowanych równań toru promienia świetlnego}
+\indent Zauważmy, że $\nu_{,y}\cos{\varphi}-\nu_{,x}\sin{\varphi}=\br{\vprod{\dot{\vec{r}}}{\grad{\!\nu}}}_z$, to znaczy, $\dot{\varphi}$ zadane jest przez trzecią składową iloczynu wektorowego 
+jednostkowego wektora prędkości i gradientu skalara $\nu$: $\dot{\varphi}=\br{\vprod{\dot{\vec{r}}}{\grad{\!\nu}}}_z$. Wynika stąd w~szczególności, że promień świetlny poruszający się w~kierunku gradientu współczynnika załamania (prostopadle do linii stałej wartości $\nu$), nie ulega ugięciu. Geometrycznie $\dot{\varphi}$ opisuje lokalną krzywiznę toru promienia świetlnego. Istotnie, oznaczając przez $\vec{t}$ jednostkowy wektor styczny
+$\{\dot{x},\dot{y}\}$ mamy $\dot{\vec{t}}=\dot{\varphi}\vec{n}$, gdzie $\vec{n}\equiv\{-\sin{\varphi},\cos{\varphi}\}$ jest jednostkowym wektorem normalnym do krzywej. W geometrii różniczkowej krzywych dowodzi się, że w parametryzacji łukowej (naturalnej) wektory $\dot{\vec{t}}$ i $\vec{n}$ są proporcjonalne do siebie a współczynnikiem proporcjonalności jest skalar krzywizny krzywej oznaczany przez $\kappa$:  $\dot{\vec{t}}=\kappa \vec{n}$, stąd $\dot{\varphi}=\kappa$. Zatem prędkości $\dot{x}$ oraz $\dot{y}$ wyznaczają lokalny kierunek styczny do toru promienia świetlnego, natomiast ,,prędkość kątowa"  \, $\dot{\varphi}$ wyznacza lokalną krzywiznę tego toru. Oczywiście mamy tu wszędzie na myśli prędkości jako pochodne względem parametru naturalnego a nie względem czasu. By było dodatkowo możliwe śledzenie promienia w czasie, to układ równań  \eqref{eq:zredukowany} należy uzupełnić o następujące równanie
+$$\dot{t}=c^{-1}e^{\nu}.$$

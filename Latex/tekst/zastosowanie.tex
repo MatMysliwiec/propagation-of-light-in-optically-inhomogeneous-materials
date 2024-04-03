@@ -1,0 +1,438 @@
+\section{Teoria dyspersji}
+\indent Zmiana współczynnika załamania przy zmianie częstotliwości stanowi istotę zjawiska dyspersji. Rozpoczynamy jej rozważania od zgłębienia się w atomową teorię materii. Molekuła składa się z pewnej liczby ciężkich cząstek,~wokół których krążą cząstki lekkie (elektrony). E\-le\-ktro\-ny niosą ładunek ujemny, a jądra dodatni. W cząsteczkach obojętnych zmiany elektronów równoważą zmiany jąder. Jednak środki ładunków dodatnich i ujemnych mogą się nie pokrywać; taki układ ma wtedy dipol elektryczny i nazywany jest polarnym. Rozważamy odwrotną sytuację,~jeśli niepolarna cząsteczka zostanie poddana działaniu pola elektrycznego to powstaje moment dipolowy. Wszystko rozpoczyna się od wektorowej sumy wszystkich momentów dipolowych cząsteczek w~jednostce objętości jest w istocie wektorem polaryzacji $ \vec{P}$. Każdy elektron wnosi do polaryzacji moment $\vec{p} = e \vec{r}$. Ponadto jądra atomowe też wnoszą pewien wkład, ale ponieważ masy jądrowe są ciężkie w porównaniu z masami elektronów, ich działanie jest pominięte. Do wyznaczenia przesunięć $\vec{r}$ cząsteczki z jej położenia równowagi zakładamy że na każdy elektron działa pewna siła Lorentza $\vec{F}=e\br{\vec{E}+\vprod{\frac{\vec{V}}{c}}{\vec{B}}}$ oraz prędkość elektronu $\vec{V}$ jest mała w~porównaniu z prędkością $c$ światła w próżni, więc wkład pola magnetycznego może być pominięty. Elektron w przybliżeniu zachowuje się jakby był związany w położeniu równowagi przez quasi-sprężystą siłę $\vec{Q}=-q\vec{r}$, z równania ruchu:
+$$m\ddot{r}+q\vec{r}=e\vec{E},$$
+przechodzimy do postaci
+$$\vec{E}=\vec{E_0}e^{-i\omega t},$$
+gdzie $\omega$ oznacza częstotliwość kątową padającego pola. Używamy tożsamości 
+$$\vec{r}=\vec{r_0}e^{-\omega t}$$
+do uzyskania rozwiązania
+$$\vec{r}=\frac{e\vec{E}}{m(\omega_0^2-\omega^2)}.$$
+Zakładając na razie, że w cząsteczce o częstości rezonansowej $\omega_0$ znajduje się tylko jeden e\-le\-ktron efektywny oraz wiedząc, że $\vec{P} = N\vec{p} = N\alpha\vec{E}$, gdzie $N$ jest ilością molekuł na jednostkę objętości,~otrzymujemy dla całkowitej polaryzacji $\vec{P}$ wyrażenie:
+$$\vec{P}=N\vec{p}=N\epsilon\vec{r}=N\frac{e^2}{m}\frac{\vec{E}}{(\omega_0^2=\omega^2)},$$
+\begin{equation}\label{eq:(30)}
+N\alpha =N\frac{e^2}{m(\omega_0^2-\omega^2)},
+\end{equation}
+dające gęstość polaryzacji $N\alpha$.
+
+Wprowadźmy pojęcie zależnej od częstotliwości stałej dielektrycznej $\epsilon(\omega)$ zdefiniowanej przez zależność Maxwella $\epsilon = n^2$, gdzie $n$ jest współczynnikiem załamania światła. Dla $\omega \neq 0$, funkcja $N\alpha(\omega)$ zgodnie z \ref{eq:(30)}, rośnie z $\omega$, ale ma nieskończoność (punkt rezonansowy) dla $\omega = \omega_0$, dla $\omega>\omega_0$. Podstawiając średnią polaryzacji $\alpha = \frac{3}{4\pi N}\frac{\epsilon - 1}{\epsilon - 2} = \frac{3}{4\pi N}\frac{n^2 -1}{n^2 +2}$, znajdujemy eksplicytną zależność współczynnika załamania od częstotliwości:
+\begin{equation}\label{eq:(31)}
+    \frac{n^2 - 1}{n^2 +2} = \frac{4\pi}{3}\frac{Ne^2}{m(\omega_0^2-\omega^2)}.
+\end{equation}
+Dla gazu $n$ jest bliskie jedności, tak że możemy ustawić $n^2+2\sim 3$ w mianowniku po lewej stronie powyższego równania i otrzymujemy:
+\begin{equation}\label{eq:(32)}
+    n^2-1\sim4\pi N \alpha = \frac{4 \pi N \epsilon^2}{m(\omega_0^2 - \omega^2)}.
+\end{equation}
+Widać, że $n$ jest rosnącą funkcją częstotliwości. Mówi się wtedy, że dyspersja jest normalna. Gdy występuje sytuacja odwrotna, czyli współczynnik załamania jest malejącą funkcją częstotliwości mamy do czynienia z dyspersją anomalną.
+Promienie o krótszej długości fali są mniej załamywane niż te o dłuższej, a to powoduje odwrócenie zwykłej kolejności barw pryzmatycznych. Dotychczas zakładaliśmy, że układ ma tylko jedną częstotliwość rezonansową. W ogólności takich częstości będzie wiele, nawet w układach z cząsteczkami tego samego rodzaju, \ref{eq:(31)} i \ref{eq:(32)} muszą być wtedy zastąpione bardziej ogólnymi wyrażeniami. Zaniedbując ruch jąder, mamy 
+\begin{equation}\label{eq:(35)}
+    \frac{4\pi}{3}N\alpha=\frac{n^2-1}{n^2+2}=\frac{4\pi}{3}N\frac{e^2}{m}\sum_{k}^{}\frac{f_k}{\omega_k^2-\omega^2}, 
+\end{equation}
+gdzie $Nf_k$ jest liczbą elektronów odpowiadającą częstotliwości rezonansowej $\omega_k$. Dla gazów ($n\sim1$) możemy przepisać \ref{eq:(35)} w postaci
+\begin{equation}\label{eq:(36)}
+    n^2-1=4\pi N \alpha = \sum_{k}^{} \frac{\rho_k}{\nu_k^2-\nu^2}=\sum_{k}^{}\frac{\rho_k}{c^2}\frac{\lambda^2\lambda_k^2}{\lambda^2-\lambda^2_k},
+\end{equation}
+gdzie
+$$\rho_k=N\frac{e^2}{\pi m}f_k,\quad \nu_k=\frac{\omega_k}{2\pi}=\frac{c}{\lambda_k},\quad \nu=\frac{\omega}{2\pi}=\frac{c}{\lambda}.$$
+Korzystając z tożsamości
+$$\frac{\lambda^2}{\lambda^2-\lambda_k^2}=1+\frac{\lambda_k^2}{\lambda^2-\lambda_k^2},$$
+upraszczamy równanie do postaci:
+\begin{equation}\label{eq:(38)}
+    n^2-1=a+\sum_{k}^{}\frac{b_k}{\lambda^2-\lambda_k^2}.
+\end{equation}
+W zakresie spektralnym, w którym nie występują częstotliwości rezonansowe, \ref{eq:(38)} można z dużą dokładnością zastąpić prostszym wzorem. Oznaczając przez $\nu_v$ częstotliwości absorpcyjne, które znajdują się po stronie krótkiej fali (fioletowej), a przez $\nu_r$ te, które znajdują się po stronie długiej fali (czerwonej), wzór dyspersyjny \ref{eq:(36)} po rozwinięciu w szeregi potęgowe odpowiednio względem $\nu$ i $\lambda$, staje się:
+\begin{equation}\label{eq:(41)}
+    \left.\begin{matrix}
+    n^2-1 = A + B\nu^2+C\nu^4+...\\ 
+    \\
+              - \frac{B'}{\nu^2} - \frac{C'}{\nu^4} - ...\\
+              \\
+          = A+\frac{Bc^2}{\lambda^2}+\frac{Cc^4}{\lambda^4}+...\\
+          \\
+              - \frac{B'\lambda^2}{c^2}-\frac{C'\lambda^4}{c^4} - ...
+\end{matrix}\right\}
+\end{equation}
+gdzie
+$$
+\left.\begin{matrix}
+    A=\sum_{v}^{}\frac{\rho_v}{\nu_v^2},\quad B=\sum_{v}^{}\frac{\rho_v}{\nu_v^4},\quad C=\sum_{v}^{}\frac{\rho_v}{\nu_v^6}\\ 
+    \\
+    B'=\sum_{r}^{}\rho_r,\quad C'=\sum_{r}^{}\rho_r \nu^2_r
+\end{matrix}\right\}
+$$
+W takim zakresie bez absorpcji wartość $n$  dla gazów mało różni się od jedności, dlatego można zastąpić $n^2-1$ przez $2(n-1)$. Wówczas, jeśli zachowamy tylko określenia do $\frac{1}{\lambda^2}$, \ref{eq:(41)} sprowadza się do formuły Cauchy'ego
+$$n-1=A_1\br{1+\frac{B_1}{\lambda^2}},$$
+gdzie
+$$A_1=\frac{A}{2}, \qquad B_1=\frac{Bc^2}{A}.$$
+W przypadku substancji o dużej gęstości, tj. cieczy lub ciał stałych, nie jest już dopuszczalne zastępowanie $n$ przez jedność w mianowniku drugiego członu w \ref{eq:(35)} \cite{born2013principles}. Poniższej przykłady zastosowania przybliżenia Cauchy-ego do wykreślenia krzywej dyspersji dla różnych materiałów,~opracowane w programie OriginLab.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.75\textwidth]{grafika/Graph1.pdf}
+    \caption{Przykład krzywej dyspersyjnej dopasowanej za pomocą modelu Crauchy'ego dla materiału polimerowego CTE-Richardson, funkcja dopasowania $n[\lambda]=A+\frac{B}{\lambda^2}$ o parametrach dopasowania $A=1.54571(40),\quad B=9.01(14) * 10^3~nm^2$ \cite{Sultanova2013}}
+\end{figure}
+
+\begin{figure}[htb]
+    \centering
+    \subfigure[Funkcja dopasowania: $n(\lambda) = A+\frac{B}{\lambda^2}$]{\includegraphics[width = 0.45\textwidth]{grafika/Graph2.pdf}}
+    \subfigure[Funkcja dopasowania: $n(\lambda) = A+\frac{C}{\lambda}+\frac{B}{\lambda^2}$]{\includegraphics[width = 0.45\textwidth]{grafika/Graph3.pdf}}
+    \caption{Dopasowanie krzywych dyspersji dla szkieł kwarcowych pochodzących z firm: Corning Glass Works, Dynasil Corporation of America, oraz General Electric Company. Wyniki są bardzo podobne dlatego zlewają się w jeden wykres oraz parametry dopasowania dla (a) dla każdego z tych wykresów są takie same $A=1,446320(41), \quad B=3,872(37)~nm^2$. Sytuacja jest podobna w przypadku (b), parametry dopasowania: $A=1,456910(88),\quad B=5,18(11)~nm^2,\quad C=-7,92(65)~nm$. Pomiary współczynników załamania przy danych długościach fali pochodzą z \cite{malitson1965interspecimen}}
+\end{figure}
+\newpage
+\section{Wyniki zastosowania}
+\indent Prócz integratora, który będzie kontrolował wielkość kroków przy wyznaczaniu oraz całkowaniu toru ruchu promienia świetlnego, należy wprowadzić zredukowany układ równań tego toru. Poprawiony dodatkowo uwzględniając prawo Cauchy'ego dla dyspersji załamania w zależności od podanej długości fali.
+\begin{center}
+\begin{lstlisting}
+nn[x_, y_] = n1 + $\frac{(-1 + n1) \epsilon (\lambda^2 - \lambda1^2) \lambda2^2}{\lambda^2 (\lambda1^2 - \lambda2^2)}$;
+\end{lstlisting}
+\end{center}
+Definicja przebiega dwustopniowo, $n_1(x,y)$ jest współczynnikiem załamania funkcji x i y dla określonej długości fali jako ogranicznik od strony fal krótkich $\lambda_1$. W programie przyjmuje ona wartość $\lambda_1 = 420~nm$. Później wykorzystano przybliżone prawo Cauchy'ego, które opisuje zależność współczynnika załamania od długości fali światła, od którego z kolei zależy wielkość kąta odchylenia promienia. Geneza prawa została dokładniej opisana w poprzednim podrozdziale.
+Poza dolnym ograniczeniem $\lambda_1$, zażądaliśmy aby współczynnik nie obniżył się do poziomu poniżej 1 przy pomocy ogranicznika górnego $\lambda_2=720~nm$. $n(\lambda)$ znajduje się pomiędzy granicznymi wartościami $n_1$ oraz 1, co osiągamy przy założeniu $(n_1-1)\epsilon=(n_2-1),~0<\epsilon<1$. Wówczas wartości próżniowe $n=1$ są osiągane jednocześnie przez $n_1$ i $n_2$, a w pozostałych przypadkach $n_2=(1-\epsilon)\cdot 1+\epsilon n_1$, inaczej $1<n_2<n_1$ i profil współczynnika załamania maleje z rosnącym kwadratem długości fali zgodnie z optycznym prawem Cauchy'ego.
+
+\subsection{Układ optyczny z równoległymi zagęszczeniami współczynnika załamania}
+Funkcja współczynnika załamania światła $e^{\nu(x,y)}$, gdzie An, Ax, Ay, P są stałe. Parametr $\xi$ służy jako mimośród, do spłaszczenia elipsy. Parametr $P$ jest używany jako ogranicznik do profilu współczynnika załamania, aby krzywa nie przekraczała wartości $y = 2$, tzn. aby była realistyczna. Rysunki wygenerowane przy pomocy programu ,,Row\_zageszcz".
+\begin{lstlisting}
+    An = 1;
+    $\xi$ = 8/10;
+    Ay = 1;
+    Ax = Ay$\sqrt{1 - \xi^2}$;
+    P = 0.5;
+\end{lstlisting}
+    
+\begin{equation}\label{eq:wsp1}
+     n1[x_,y_{}] = 1 + P(\frac{2 An}{2+\frac{x^2}{Ax^2}+\frac{y^2}{Ay^2}} + \frac{2 An}{2+\frac{(x-2Ay)^2}{Ax^2}+\frac{y^2}{Ay^2}} + 4 Sin[y]^{12})
+\end{equation}
+Poniższe, jak i następne rysunki obrazujące profil współczynnika załamania zostały uzyskane przez program ,,Profil\_wsp".
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.6\textwidth]{grafika/Rys8.jpg}
+    \caption{Profil współczynnika załamania o funkcji \ref{eq:wsp1} dla układu równoległych światłowodów, przedstawia przekrój funkcji $nn(x,y)$ dla konkretnego $x$ lub $y$, tutaj do współrzędnej $x$}
+    \label{profil_wsp_zal}
+\end{figure}
+%\cmmt{
+%u: w powyższym wzorze $\epsilon$ wystepuje w dwóch niezwiązanych ze sobą  kontekstach: w $Ax$ jako mimośród - parametr %spłaszczenia elipsy, oznaczany zwykle przez literę 'e' od elipticity; w definicji $nn$ to zwykły parametr nie mający nic wspólnego z mimośrodem, którego rola opisana jest poniżej.  
+
+%Proszę opisać dlaczego definicja współczynnika jest dwustopniowa: $n_1(x,y)$ definiuje współczynnik załamania jako funkcję x i y dla określonej długości fali $\lambda_1$ (tu przyjęliśmy konkretne ograniczenie od strony fal krótkich $\lambda_1$ /niech Pan sprawdzi w programie jakie/). Do utworzenia współczynnika załamania dla innych długości fali wykorzystaliśmy przybliżone prawo Cauchy'ego $n(\lambda)=A+B\lambda^{-2}$ ale na nasze potrzeby w nieco innej formie -- zażądaliśmy by od strony ograniczenia górnego $\lambda_2$ współczynnik nie obniżył się do poziomu poniżej $1$, tzn że $n(\lambda$ znajduje się pomiędzy granicznymi wartościami $n_1$ oraz $1$, co można osiągnąć przy założeniu: $(n_1-1)\epsilon=(n_2-1)$, $0<\epsilon<1$ wówczas wartości próżniowe $n=1$ są osiągane jednocześnie przez $n_1$ i $n_2$ a w pozostałych przypadkach $n_2=(1-\epsilon)\cdot 1+\epsilon n_1 $ tzn $1<n_2<n_1$
+%i profil $n(\lambda)$ maleje z rosnącym kwadratem $lambda$ zgodnie z optycznym prawem Cauchy'ego /proszę opisać co to jest to prawo/.
+%Proszę sporządzić wykres $n_2(\lambda)$ przy ustalonych $\lambda_1$ i $\lambda_2$ z granic widma optycznego /są w programie/ sporządzić dwa trzy rysunki dla różnych $\epsilon$ by było widać wpływ tego parametru /ustawic te rysunki w 1 rzędzie/}
+\begin{figure}[hbt]
+    \centering
+    \includegraphics[width=0.6\textwidth]{grafika/Rys44.jpg}
+    \caption{Wykresy współczynnika załamania przy granicach $\lambda_1=400~nm$ oraz $\lambda_2=720$ o różnych wartościach parametru $\epsilon$, aby pokazać wpływ tego parametru. Czerwona linia $\epsilon=0.2$, zielona linia $\epsilon=0.5$, niebieska linia $\epsilon=0.8$}
+\end{figure}
+
+\newpage
+
+Odwzorowanie rozwiązywanego zredukowanego układu równań różniczkowych toru promienia świetlnego. Skalar $\nu$ jako wynik logarytmu naturalnego współczynnika załamania światła $e^{\nu(x,y)}$;~$d\nu x$ oraz $d\nu y$ odpowiednio pochodne cząstkowe $\nu$ po x i y. Ostania linijka to równanie promienia świetlnego, gdzie $x$\_ = $\dot{x}=\cos{\varphi}$, $y$\_ = $\dot{y}=\sin{\varphi}$, $\phi$\_ = $\dot{\varphi}=\nu_{,y}\cos{\varphi}-\nu_{,x}\sin{\varphi}$. $t$\_ to zdefiniowane wcześniej $n1[x,y]$, dodane dodatkowo, aby zbadać w jakim czasie cząstka światła przebywa zdefiniowaną przez nas drogę.
+\begin{lstlisting}
+    $\nu$[x_, y_] = Log[nn[x, y]];
+    d$\nu$x[x_, y_] = D[$\nu$[x, y], x];
+    d$\nu$y[x_, y_] = D[$\nu$[x, y], y];
+    F[s_, x_, y_, $\phi$_, t_] = {Cos[$\phi$], Sin[$\phi$],
+        d$\nu$y[x,y] Cos[$\phi$] - d$\nu$x[x,y] Sin[$\phi$], Exp@($\nu$[x,y])};
+\end{lstlisting}
+Po zaprogramowaniu integratora oraz zdefiniowaniu układu równań obrazującego tor promienia pozostaje wprowadzenie warunków początkowych: współrzędnych początku promienia $x, y$;~długość drogi jaką musi przebyć $s$ oraz nachylenia toru $\phi$. Dodatkowo założono, że proces całkowania zatrzymuje się po dotarciu promienia do granic obszaru uwidocznionego na rysunkach. Z danych warunków zostaną przeprowadzone 6 promieni o różnych długości fal:
+\begin{itemize}
+    \item $\lambda_{r} = 650 ~ nm$ - barwa czerowna
+    \item $\lambda_{o} = 615 ~ nm$ - barwa pomarańczowa
+    \item $\lambda_{y} = 590 ~ nm$ - barwa żółta
+    \item $\lambda_{g} = 510 ~ nm$ - barwa zielona
+    \item $\lambda_{b} = 450 ~ nm$ - barwa niebieska
+    \item $\lambda_{p} = 390 ~ nm$ - barwa fioletowa
+\end{itemize}
+Poniżej przestawione symulacje przebiegu zaprogramowanego promienia w różnych układach optycznych dla różnych warunków początkowych, zaczynając od układu składającego się z światłowodów:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.64\textwidth]%{grafika/Rys31_compressed.pdf}
+    {grafika/PNG/Rys31-1.png}
+    \caption{Rozchodzenie się promieni świetlnych w modelu światłowodu, warunki początkowe: $x = -6, \quad y = -5,\quad \phi = \frac{20 \pi}{180}$}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]%{grafika/Rys9_compressed.pdf}
+    {grafika/PNG/Rys9-1.png}
+    \caption{Zagęszczanie się promieni o różnych kątach nachylenia toru, widać jak promienie przejmują postać fali przez liczne odbijanie się od ścianek ośrodka. Warunki początkowe: $x = -9, \quad y = -5$}
+    \label{fig:światłowód}
+\end{figure}
+\newpage
+\begin{figure}[H]
+    \centering
+    \subfigure[$x = -4,\quad y = -6,\quad \phi = \frac{60 \pi}{180}$]{\includegraphics[width = 0.65\textwidth]%{grafika/Rys10_compressed.pdf}
+    {grafika/PNG/Rys10-1.png}
+    }
+    \subfigure[$x = -6,\quad y = 3,\quad \phi = \frac{350 \pi}{180}$]{\includegraphics[width = 0.65\textwidth]%{grafika/Rys12_compressed.pdf}
+    {grafika/PNG/Rys12-1.png}
+    }
+    \caption{Rozchodzenie się promieni w układzie składającym się z czterech równoległych zagęszczeń gradientu współczynnika załamania}
+\end{figure}
+\newpage
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]%{grafika/Rys35.pdf}
+    {grafika/PNG/Rys35-1.png}
+    \caption{\label{rys:xxx} Przedstawienie rodziny rozchodzących się wiązek światła po układzie optycznym. Współrzędne punktu początkowego $x=-9, \quad y=-9$, kąt nachylenia $\phi$ od $0^\circ$ do $90^\circ$ co $15^\circ$. }
+\end{figure}
+
+\cmmt{na rys \figref{rys:xxx} zdecydowanie przydałoby sie rozszerzyć zakres zmiennej $x$ do co najmniej 12 (być może będzie trzeba odpowiednio zwiększyć $s_2$, można też presunąć x0 do -9 a $w$ ustawić na 9, lub jakoś ionaczej, by było widać wyraźnie efekt 'pułapkowania' - może Pan wymyślic inną nazwę dla pułapkowania )}
+
+\cmmt{w tym miejscu narzuca sie pytanie, a co by się zmieniło, gdyby zamiast równoległych zgęszczeń współczynnika załamania mielibyśmy siatkę prostopadłą takich zgęszczeń -- 'kratę' a nie zespół linii równoległych -- proszę zaprojektować taki współczynnik załamania jako funkcje x,y i zobaczyć jak ewoluują pęki pod różnymi kątami z danego punktu i porównać z punktami startowymi np wyznaczonych przez symetrię siatki , np punkty przecięcia sie linii albo węzły albo punkty centralne}
+
+\subsection{Soczewka wypukła}
+Układ składający się z pojedynczej soczewki wypukłej. Rysunki wygenerowane przy pomocy programu ,,Socz\_wypukła". Funkcja współczynnika załamania wraz z wprowadzanymi stałymi:
+\begin{lstlisting}
+    v = 0.5;
+    a = 1;
+    b = 0.9;
+    ro = 1;
+    P = 0.9;
+    u = $\sqrt{\br{\frac{x}{a}}^2+\br{\frac{y}{b}}^2}$;
+\end{lstlisting}
+\begin{equation}\label{eq:wsp2}
+    n1 = 1 + P(\frac{1 + Exp[-ro/v]}{1 + Exp[u - ro/v]});
+\end{equation}   
+\newpage
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.55\textwidth]{grafika/Rys23.jpg}
+    \caption{Profil współczynika załamania o funkcji \ref{eq:wsp2} dla układu składającego się z jednej soczewki wypukłej}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]%{grafika/Rys32_compressed.pdf}
+    {grafika/PNG/Rys32-1.png}
+    \caption{Prezentacja biegu rodziny pęków promieni dla soczewki wypukłej sferycznej, $a=b=1$. Punkt startowy $x=-5,\quad y=-5$, z kątami nachylenia $\phi$ od $0^\circ$ do $90^\circ$ co $15^\circ$}
+\end{figure}
+\begin{figure}[H]
+   \centering
+    \subfigure[$x = -6,\quad y = -5,\quad \phi = \frac{25 \pi}{180}$]{\includegraphics[width = 0.65\textwidth]%{grafika/Rys13_compressed.pdf}
+    {grafika/PNG/Rys13-1.png}
+    }
+    \subfigure[$x = -6,\quad y = 1,\quad \phi = \frac{10 \pi}{180}$]{\includegraphics[width = 0.65\textwidth]%{grafika/Rys14_compressed.pdf}
+    {grafika/PNG/Rys14-1.png}
+    }
+    \caption{Przechodzenie promieni w układzie składającym się z soczewki wypukłej. Można zaobserwować jedynie rozszczepienie się promienia na poszczególne barwy przy dotarciu do wysokiego gradientu współczynnika załamania soczewki}
+\end{figure}
+\newpage
+\cmmt{pod tym rysunkiem przydałaby się prezentacja biegu rodziny pęków promieni dla soczewki sferycznej /$a=b=1$/. Jako punkt startowy obrać $x=-5$ $y=-5$, oraz kąty od 0 do 90 stopni np co $15^\circ$. Wiązka startująca pod kątem 45 stopni powinna sie nie ugiąć i nie rozproszyć.}
+
+\newpage
+
+\cmmt{następny rysunek powinien zaprezentować soczewkę eliptyczną o dużym spłaszczeniu np $a=1$ $b=3$. Niech ta soczewka ma oś główną pod kątem 45 stopni tzn założyć równanie: $(x-y)^2/a^2+(x+y)^2/b^2$ zamiast $(x)^2/a^2+(y)^2/b^2$  w definicji wsp. załamania. Zaprezentować pęki promieni jak powyżej, przy czym dodatkowo rodzinę pęków startujących z położenia $x=+5$ $y=-5$ pod kątami od $180$ stopni do $90$ stopni co $-15^\circ$. Jak zmieni sie obraz gdy zamiast elipsy $(x)^2/a^2+(y)^2/b^2$ rozważymy hiperbole 
+$(x)^2/a^2-(y)^2/b^2$ /trzeba wziąć absolutne wartości tego wyrażenia/}
+
+\subsection{Układ dwóch soczewek rozpraszającej i skupiającej}
+Układ, gdzie po przeciwny stronach występuje niski i wysoki gradient współczynnika załamania,~symulujące soczewke rozpraszającą i skupiającą. Rysunki wygenerowane przy pomocy programu ,,Ukl\_socz". Funkcja współczynnika załamania układu:
+\begin{lstlisting}
+    v = 0.2;
+    a = 1;
+    b = 0.9;
+    ro = 0.9;
+    P = 0.35;
+    u = $\sqrt{\br{\frac{x}{a}}^2+\br{\frac{y}{b}}^2}$;
+\end{lstlisting}
+\begin{equation}\label{eq:wsp4}
+    n1 = 1 + P(\frac{1 + Exp[-ro/v]}{1 + Exp[u - ro/v]}+\frac{(x - 1)}{1 + Exp[u - ro / v]});
+\end{equation}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.55\textwidth]{grafika/Rys24.jpg}
+    \caption{Profil współczynnika załamania o funkcji \ref{eq:wsp4} dla układu o przeciwny wartościach gradientu współczynnika załamania w krańcach układu}
+\end{figure}
+\newpage
+\begin{figure}[H]
+   \centering
+    \subfigure[$x = -6,\quad y = -1.1,\quad \phi = \frac{20 \pi}{180}$]{\includegraphics[width = 0.65\textwidth]%{grafika/Rys16_compressed.pdf}
+    {grafika/PNG/Rys16-1.png}
+    }
+    \subfigure[$x = -4.5,\quad y = -0.1,\quad \phi = \frac{335 \pi}{180}$]{\includegraphics[width = 0.65\textwidth]%{grafika/Rys17_compressed.pdf}
+    {grafika/PNG/Rys17-1.png}
+    }
+    \caption{Rozchodzenie się promieni rozpoczęte po stronie pola z niskim współczynnikiem załamania, aby po przebiciu zaobserwować rozproszenie wiązek promieni różnych barw}
+\end{figure}
+
+\newpage
+
+\begin{figure}[H]
+   \centering
+    \subfigure[$x = 5,\quad y = -2,\quad \phi = \frac{179 \pi}{180}$]{\includegraphics[width = 0.65\textwidth]%{grafika/Rys18_compressed.pdf}
+    {grafika/PNG/Rys18-1.png}
+    }
+    \subfigure[$x = -3,\quad y = -6,\quad \phi = \frac{79 \pi}{180}$]{\includegraphics[width = 0.65\textwidth]%{grafika/Rys19_compressed.pdf}
+    {grafika/PNG/Rys19-1.png}
+    }
+    \caption{Rozchodzenie się promieni rozpoczęte po stronie pola z wysokim współczynnikiem załamania skierowane w stronę pola o niskim współczynniku, aby zaobserwować odbicie się wiązek światła}
+\end{figure}
+\newpage
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{grafika/Rys36_compressed.pdf}
+    \caption{Prezentacja biegu rodziny pęków promieni dla układu działającego jak połączone soczewki skupiająca i rozpraszająca. Punkt startowy $x=6,\quad y=0$,~z kątami nachylenia $\phi$ od $135^\circ$ do $225^\circ$ co $15^\circ$}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]%{grafika/Rys37_compressed.pdf}
+    {grafika/PNG/Rys37-1.png}
+    \caption{Prezentacja biegu rodziny pęków promieni tego samego układu. Punkt startowy $x=-3,\quad y=0$, z kątami nachylenia $\phi$ od $45^\circ$ do $315^\circ$ co $15^\circ$}
+\end{figure}
+\cmmt{na powyższym rysunku widać obszary, które działają jak soczewka skupiająca i obszary działające jak soczewka rozpraszająca. Przydałoby sie uzupełnić wcześniejszy przykład soczewki eliptycznej -skupiającej- z modelem soczewki rozpraszającej. Dalej można by zobaczyć ukłd dwusoczewkowy typu luneta albo mikroskop}
+\newpage
+\subsection{Soczewka eliptyczna spłaszczona pod kątem 45$^\circ$}
+Pojedyncza soczewka skupiająca, jednak zakrzywiona i zarazem spłaszczona pod kątem $45^{\circ}$. Rysunki wygenerowane przy pomocy programu ,,Socz\_zakrzyw". Funkcją współczynnika załamania światła układu:
+\begin{lstlisting}
+    v = 0.5;
+    a = 1;
+    b = 3;
+    ro = 1;
+    P = 0.9;
+    u = $\sqrt{\br{\frac{x-y}{a}}^2+\br{\frac{x+y}{b}}^2}$;
+\end{lstlisting}
+\begin{equation}\label{eq:wsp3}
+    n1 = 1 + P(\frac{1 + Exp[-ro/v]}{1 + Exp[u - ro/v]});
+\end{equation}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.58\textwidth]{grafika/Rys33.jpg}
+    \caption{Profil współczynnika załamania o funkcji \ref{eq:wsp3} dla spłaszczonej soczewki eliptycznej pod kątem 45$^\circ$}
+\end{figure}
+\newpage
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]%{grafika/Rys34_compressed.pdf}
+    {grafika/PNG/Rys34-1.png}
+    \caption{Prezentacja biegu rodziny pęków promieni dla soczewki spłaszczonej pod kątem 45$^\circ$. Punkt startowy $x=5,\quad y=-5$, z kątami nachylenia $\phi$ od $90^\circ$ do $180^\circ$ co $15^\circ$}
+\end{figure}
+
+\subsection{Światłowód w kształcie okręgu}
+Ośrodek płaski z profilem współczynnika załamania tworzącym niejednorodny rozkład o symetrii kołowej. Funkcja $f[x_{}]$ zagęszcza gradient, aby skupić go w postaci oringu. Rysunki wygenerowane przy pomocy programu ,,Swiatlowod".
+\begin{lstlisting}
+    k = 3;
+    ro = 2;
+    aa = ro/3;
+    P = 1;
+    f[x_] = If[-1 < x < 1, (1-(x$^2$)$^2$)^$2k$], 0];
+\end{lstlisting}
+\begin{equation}\label{eq:wsp6}
+    n1[x_,y_{}] = 1 + P f[\frac{\sqrt{x^2+y^2}-ro}{aa}];
+\end{equation}
+\newpage
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.55\textwidth]{grafika/Rys45.jpg}
+    \caption{Profil współczynnika załamania o funkcji \ref{eq:wsp6} dla zakrzywionego światłowodu w formie oringu}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]
+    %{grafika/Rys43.pdf}
+    {grafika/PNG/Rys43-1.png}
+    \caption{Wiązka promienia puszczona w środku światłowodu na współrzędnych $x=-2, \quad y=0$ o kącie nachylenia $\phi=\frac{75 \pi}{180}$}
+\end{figure}
+\newpage
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]
+    %{grafika/Rys42.pdf}
+    {grafika/PNG/Rys42-1.png}
+    \caption{Pojedyncze promienie o barwie czerwonej o różnym kącie nachylenia od $90^\circ$ do $300^\circ$ co $30^\circ$, aby pokazać kiedy promienie przechodzą światłowód, a kiedy są w nim uwięzione}
+\end{figure}
+
+\subsection{Siatka zagęszczeń współczynnika załamania}
+Układ, w którym występują pionowe, jak i poziome pasy z większym gradientem współczynnika załamania, co powoduje, że całość przypomina klatkę. Rysunki wygenerowane przy pomocy programu ,,Krata". Jej funkcja współczynnika załamania:
+\begin{lstlisting}
+    An = 1;
+    $\xi$ = 8/10;
+    Ay = 1;
+    Ax = Ay$\sqrt{1 - \xi^2}$;
+    P = 0.1;
+\end{lstlisting}
+\begin{equation}\label{eq:wsp5}
+    n1[x_,y_{}] = 1 + P(\frac{2 An}{2+\frac{x^2}{Ax^2}+\frac{y^2}{Ay^2}} + \frac{2 An}{2+\frac{(x-2Ay)^2}{Ax^2}+\frac{y^2}{Ay^2}} + 4 Sin[x]^{12} + 4 Sin[y]^{12})
+\end{equation}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.55\textwidth]{grafika/Rys38.jpg}
+    \caption{Profil współczynika załamania o funkcji \ref{eq:wsp5} dla "klatki zagęszczeń" współczynnika załamania}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]%{grafika/Rys40.pdf}
+    {grafika/PNG/Rys40-1.png}
+    \caption{Prezentacja biegu rodziny pęków promieni startujących od środka przecięcia się linii zagęszczeń współczynnika załamania. Punkt startowy $x=-7.8,\quad y=7.8$, z kątami nachylenia $\phi$ od $285^\circ$ do $355^\circ$ co $15^\circ$}
+\end{figure}
+\newpage
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]%{grafika/Rys41.pdf}
+    {grafika/PNG/Rys41-1.png}
+    \caption{Rodzina promieni wychodzących z środka układu z różnymi kątami nachylenia. Punkt startowy $x=0,\quad y=0$, z kątami nachylenia $\phi$ od $10^\circ$ wykonując pełny obrot co $60^\circ$}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]%{grafika/Rys39.pdf}
+    {grafika/PNG/Rys39-1.png}
+    \caption{Rodzina grup promieni rozprzestrzeniające się od początku układu $x=-9,\quad y=-9$, z różnymi kątami nachylenia $\phi$ od $0^\circ$ do $90^\circ$ zmieniający się co $15^\circ$}
+\end{figure}
+\newpage
+\subsection{Kropla wody}
+Zamodelowano płaską kroplę wody do odtworzenia efektu tworzenia się tęczy przez załamania się promienia świetlnego na brzegach kropli. W tym przypadku symulację są przeprowadzane przy różnej gradientach współczynnika załamania, tzn. przy zmianie grubości wartwy $wdth$, rozmycia granic kropli. Rysunki wygenerowane przy pomocy programu ,,Kropla\_wody".
+\begin{equation}\label{eq:wsp6}
+    n1 = 1 + \frac{1}{3}(\frac{1}{2}+\frac{1}{2}\frac{ArcTan[(\sqrt{x^2+y^2}-1)/wdth]}{ArcTan[(0-1)/wdth]});
+\end{equation}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.55\textwidth]{grafika/Rys47(1).jpg}
+    \caption{Profil współczynika załamania o funkcji \ref{eq:wsp6} na krawędzi kropli wody, do konstrukcji współczynnika została wzięta funkcja typu schodkowego arcusu tangensu, parametr $width=0.05$}
+    \label{fig:my_label}
+\end{figure}
+
+Krótko wyjaśniając,~na czym polega efekt tworzenia się tęczy. Rozróżniamy jej rodzaje ze względu na proces powstawania: pierwszego rzędu oraz drugiego rzędu są nam najbliższe,~ponieważ często możemy je zobaczyć. Oczywiście światło dalej odbija się wewnątrz kropli tworząc tęcze kolejnych rzędów,~jednak odbite światło jest na tyle osłabione,~że ledwo widoczne przy trzecim i~czwartym rzędzie. Pozostałe niemożliwe do dostrzeżenia gołym okiem.  Głównym zjawiskiem odbywającym się przy pojawianiu się tęczy są zawsze występujące dwa załamania zewnętrzne,~przy wchodzeniu i~wychodzeniu promieni z kropli oraz odbicia wewnętrzne,~które definiują z jakim rzędem tęczy mamy do czynienia. Zerowy rząd,~promień przechodzi przez krople bez odbicia od jej brzegu. W pierwszym i~drugim rządzie tęczy,~występuje odpowiednio jedno odbicie i~dwa odbicia wewnętrzne wewnątrz kropli,~itd..
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.65\textwidth]{grafika/Rys59.pdf}
+    \caption{Tworzenie się tęczy drugiego rzędu. Promień wychodził z $x=-2,~y=0$ i utworzył tęcze będąc pod kątem $\phi=34,43^{\circ}$}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.65\textwidth]{grafika/Rys50.pdf}
+    \caption{Pokazanie wpływu grubości brzegu kropli na załamywanie się promienia, przy wartości parametra $wdth=0.5$. Promienie startują z punktu o współrzędnych $x=-2,~y=0$ przy kącie nachylenia $\phi=32,91^{\circ}$. Można zauważyć na rysunku tworzenie się tęczy pierszego rzędu}
+\end{figure}
+\begin{figure}[H]
+   \centering
+    \subfigure[$wdth=0.8$]{\includegraphics[width = 0.65\textwidth]{grafika/Rys48.pdf}}
+    \subfigure[$wdth=0.7$]{\includegraphics[width = 0.65\textwidth]{grafika/Rys49.pdf}}
+    \caption{Pokazanie wpływu grubości brzegu kropli na załamywanie się promienia, czyli przy różnych wartościach parametru $wdth$ w programie. Promienie startują z punktu o współrzędnych $x=-2,~y=0$ przy kącie nachylenia $\phi=32,91^{\circ}$}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.75\textwidth]{grafika/Rys51.pdf}
+    \caption{Ciekawy przypadek podczas symulowania oraz testowania różnych wariantów parametrów. Potrójne odbicie wewnętrzne, gdyby to dotyczyło wszystkich promieni, nie tylko czerwonej moglibyśmy mówić o tworzeniu się tęczy trzeciego rzędu}
+\end{figure}
+\begin{figure}[H]\ContinuedFloat
+    \centering
+    \subfigure[Promień o barwie fioletowej, $\lambda_p=650~nm$,\quad kąt nachylenia $\phi=-34.5^{\circ}$]{\includegraphics[width=0.65\textwidth]{grafika/Rys52.pdf}}
+    \subfigure[Promień o barwie indygo, $\lambda_i=615~nm$,\quad kąt nachylenia $\phi=-34.2^{\circ}$]{\includegraphics[width=0.65\textwidth]{grafika/Rys53.pdf}}
+    \caption{Proces tworzenia się tęczy rzędu pierwszego podzielonę na końcowe załamania zewnętrzne promieni poszczególnych 7 barw tęczy. Współrzędne punktu startowego $x=-2,~y=0$, Tworzenie struktury zaczynało się od $\phi=-34.5^{\circ}$ do $\phi=-33^{\circ}$}
+\end{figure}
+\begin{figure}[H]\ContinuedFloat
+    \centering
+    \subfigure[Promień o barwie niebieskiej, $\lambda_n=590~nm$,\quad kąt nachylenia $\phi=-33.9^{\circ}$]{\includegraphics[width = 0.65\textwidth]{grafika/Rys54.pdf}
+    }
+    \subfigure[Promień o barwie zielonej, $\lambda_g=510~nm$,\quad kąt nachylenia $\phi=-33.6^{\circ}$]{\includegraphics[width = 0.65\textwidth]{grafika/Rys55.pdf}
+    }
+    \caption{Proces tworzenia się tęczy rzędu pierwszego podzielonę na końcowe załamania zewnętrzne promieni poszczególnych 7 barw tęczy. Współrzędne punktu startowego $x=-2,~y=0$, Tworzenie struktury zaczynało się od $\phi=-34.5^{\circ}$ do $\phi=-33^{\circ}$}
+\end{figure}
+\begin{figure}[H]\ContinuedFloat
+    \centering
+    \subfigure[Promień o barwie żółtej, $\lambda_y=470~nm$,\quad kąt nachylenia $\phi=-33.2^{\circ}$]{\includegraphics[width = 0.65\textwidth]{grafika/Rys56.pdf}
+    }
+    \subfigure[Promień o barwie pomarańczowej, $\lambda_o=430~nm$,\quad kąt nachylenia $\phi=-33.1^{\circ}$]{\includegraphics[width = 0.65\textwidth]{grafika/Rys57.pdf}
+    }
+    \caption{Proces tworzenia się tęczy rzędu pierwszego podzielonę na końcowe załamania zewnętrzne promieni poszczególnych 7 barw tęczy. Współrzędne punktu startowego $x=-2,~y=0$, Tworzenie struktury zaczynało się od $\phi=-34.5^{\circ}$ do $\phi=-33^{\circ}$}
+\end{figure}
+\begin{figure}[H]\ContinuedFloat
+    \centering
+    \subfigure[Promień o barwie czerwonej, $\lambda_p=400~nm$,\quad kąt nachylenia $\phi=-33^{\circ}$]{\includegraphics[width = 0.65\textwidth]{grafika/Rys58.pdf}
+    }
+    \caption{Proces tworzenia się tęczy rzędu pierwszego podzielonę na końcowe załamania zewnętrzne promieni poszczególnych 7 barw tęczy. Współrzędne punktu startowego $x=-2,~y=0$, Tworzenie struktury zaczynało się od $\phi=-34.5^{\circ}$ do $\phi=-33^{\circ}$}
+\end{figure}

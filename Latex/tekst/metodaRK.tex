@@ -1,0 +1,176 @@
+Metoda Bogackiego-Shampine’a jest bardziej wydajną oraz ma lepszą stabilność aniżeli inne tego typu metody (np. Dormand-Prince’a, Fehlberga). Opartą ją na trójstopniowej formule trzeciego rzędu Ralstona, ze względu na najlepszą stabilność. Ponadto, dodano automatyczną kontrolę wielkości kroku za pomocą metody drugiego rzędu, co wiąże się z niewielkim kosztem na krok. Nie tylko kontrola zwraca się poprzez zapewnienie najbardziej efektywnego rozmiaru kroku, ale także unika rozmiarów kroków, które prowadzą do niestabilności.
+
+Do utrzymania niskich kosztów na krok, ograniczono się do minimalnej liczby etapów. Przy doborze parametrów sugerowano się, aby były w pewnym sensie małe, tak aby mieć formułę dokładną dla ,,typowego"~problemu \cite{bogacki19893}. Najlepszą możliwością jest uczynienie niektórych z~tych współczynników zerowymi, ponieważ wtedy dla niektórych problemów wzór będzie rzędu 3,~co można było uzyskać przy pomocy wzorów przedstawionych przez Ralstona \cite{ralston1962runge}:
+$$k_{1}=h_{n}f\br{x_{n},y_{n}},$$
+$$k_{2}=h_{n}f\br{x_{n}+\alpha h_{n},y_{n}+ A \alpha k_1},$$
+$$k_{3}=h_{n}f\br{x_{n}+\beta h_{n},y_{n}+ B \gamma  k_{1} + B (\beta - \gamma) k_{2}},$$
+\begin{equation}\label{eq:RK3}
+y_{n+1}-y_{n}=w_{1} k_{1}+w_{2} k_{2}+(1 - w_{1} -w_{2}) k_{3}.
+\end{equation}
+Po wyznaczeniu parametrów dowolnych, zakładając $A=1, \quad B=1$, formuła będzie wyglądała następująco:
+$$k_{1}=h_{n}f\br{x_{n},y_{n}},$$
+$$k_{2}=h_{n}f\br{x_{n}+(\frac{1}{2})h_{n},y_{n}+\frac{1}{2}k_1},$$
+$$k_{3}=h_{n}f\br{x_{n}+(\frac{3}{4})h_{n},y_{n}+(\frac{3}{4})k_{2}},$$
+$$y_{n+1}-y_{n}=(\frac{2}{9})k_{1}+(\frac{1}{3})k_{2}+(\frac{4}{9})k_{3}.$$
+Wzór ten nie do końca minimalizuje normę euklidesową współczynników błędu obcięcia, ale różnica jest zbyt mała, aby miała jakiekolwiek znaczenie praktyczne.
+
+\section{Metoda Bogackiego-Shampine'a RK3(2)}\label{s:A}
+\indent Wykorzystano dwustopniowe wzory RK, aby ponownie wykorzystać etapy powstałe w ocenie formuły rzędu trzeciego, aby otrzymać wynik $y_{n+1}$ rzędu drugiego. Wszystkie wzory drugiego rzędu Rungego - Kutta mają ten sam obszar stabilności, podobnie jak wszystkie trzystopniowe wzory trzeciego rzędu. W przypadku dwustopniowego istnieje niewielka elastyczność w zakresie uzyskania wysokiej jakości oszacowania błędu. Dodatkową elastyczność uzyskuje się poprzez uświadomienie sobie, że większość kroków kończy się sukcesem, a jeśli krok jest sukcesem, pierwszym etapem następnego kroku jest zawsze $f(x_{n+1},\hat{y}_{n+1})$. Poprzez dodanie etapu 
+$$k_{4}=f\br{x_{n}+h,\hat{y}_{n}+h\sum_{j=1}^{3}\hat{b}_{j}k_{i}},$$
+i rozważenie formuły drugiego rzędu w postaci:
+$$y_{n+1}=\hat{y}_{n}+h\sum_{i=1}^{4}b_{i}k_{i},$$
+uzyskuje się elastyczność przy bardzo niewielkim dodatkowym koszcie. To podejście jest nazywane FSAL, First Same As Last. W tym podejściu określamy, która z pary formuł zostanie użyta do posunięcia kroku naprzód, czyli lokalną ekstrapolacje \cite{bogacki19893}. 
+
+Opracowanie formuły Bogackiego-Shampine'a RK3(2) przy pomocy narzędzi komputerowej algebry komputerowej Mathematica\footnote{Przygotowany na podstawie materiałów do wykładu z metod obliczeniowych dla studentów kierunku
+Fizyka Techniczna PK}. Pracujemy na formule trzeciego rzędu Ralstona, ale żeby zmniejszyć do minimum błąd metody oraz użyć później tego parametru do kontroli kroku przy całkowaniu toru ruchu promienia świetlnego używamy go wraz z formułą drugiego rzędu. Parametry do formuły trzeciego rzędu uzyskaliśmy przyjmując założenia:
+\begin{enumerate}
+\item symetria przyrostów punktów węzłowych, tzn, jeśli x$\rightarrow$ x + A $\Delta$x to y$\rightarrow$ y + A $\Delta$ y
+\item wagi $w1,~w2,~w3 = 1-w1-w2$ sumują się do 1
+\end{enumerate}
+Jak zostało wspomniane dodatkowo przyjęliśmy, że $A=1, \quad B=1$, mając wszystkie założenia tworzymy formułę RK trzeciego rzędu, została wypisana powyżej \ref{eq:RK3}. Sama procedura wyglądała podobnie jak teraz prezentowane omówienie tworzenia metody RK(3)2.
+\begin{lstlisting}
+    symb[expr_]:= expr /. {Derivative[i_,j_][F][x,Y[x]] 
+        $\rightarrow$ ToExpression["F" <> ToString[i] <> ToString[j]], 
+        F[x,Y[x]] $\rightarrow$ F}
+\end{lstlisting}
+Funkcja skraca symbolikę, aby późniejsze wyniki były czytelniejsze. Zmienia zapis pochodnych cząstkowych poprzez przekształcenie ich w postać string, dzięki czemu zamiast $F^{(0,1)}[x,Y[x]]$ dostajemy $F01[x,Y[x]]$. Dodatkowo wyrzuca niepotrzebny symbol argumentów $[x,Y[x]].$ Zamiast \begin{lstlisting} 
+    Y$^{''}$[x] $\rightarrow$ Y$^{'}$[x] F$^{(0,1)}$[x,Y[x]] + F$^{(1,0)}$[x,Y[x]], \end{lstlisting} 
+dostajemy 
+\begin{lstlisting} 
+    Y$^{''}$[x] $\rightarrow$ F F01 + F10.\end{lstlisting} Cyfry przy funkcji opisujących układ za pomocą związków położeń z prędkościami F, oznaczają stopień pochodnej cząstkowej odpowiednio po pierwszej zmiennej i drugiej zmiennej.
+\begin{lstlisting}
+    repl = Nest[Flatten@ {Collect[D[First @#, x], 
+        F[x,Y[x]], Simplify] //. #,#} &, 
+        {Y$^{'}$[x] $\rightarrow$ F[x,Y[x]]}, 3];
+    Print[Reverse@% // symb // TableForm]
+\end{lstlisting}
+Każda kolejna reguła odwołuje się do wielkości $Y'$, $Y''$ itd., więc należy dokonać odpowiednich podstawień, używamy do tego zmiennej $repl$, która działa na podstawie analitycznych informacji o $F$ definiującej układ różniczkowy $dY = F[x, Y]$, $Y$ jest wektorem o dowolnym wymiarze, a~$F$ jest funkcja wektorowa zależna od $x$ i $Y$, jak było to wcześniej opisane w \ref{s:spro_ukl}.
+\begin{lstlisting}
+    Out:
+    Y$^{'}$[x] $\rightarrow$ F
+    Y$^{''}$[x] $\rightarrow$ F F01 + F10
+    Y(3)[x] $\rightarrow$ F01 F10 + F (F01$^2$ + F11) + F (F F02 + F11) + F20
+    Y(4)[x] $\rightarrow$ F01$^2$ F10 + 3 F10 F11 + F$^2$ (F F03 + F12) + F01 F20 + 
+        + F (F01$^3$ + F02 F10 + 3 F01 F11 + F21) + 2 F (F02 F10 + 
+        + F01 F11 + F (2 F01 F02 + F12) + F21) + F30
+\end{lstlisting}
+Dostajemy rozwinięcia szeregu Taylora do rzędu czwartego, które później posłużą nam do zapisania formalnego szeregu Taylora dla integratora. 
+\begin{lstlisting}
+    Series[Y[x+h], {h,0,4}] //. repl;
+    YE = % // symb;
+    Print[Y[x+h],"==",YE]
+\end{lstlisting}
+Wykorzystujemy powyższe wyniki do zapisania formalnego szeregu Taylora, który definiuje nam wzorzec, do którego integrator powinien dążyć, oznaczmy ten wzorzec jako YE = Yexact. Wykorzystujemy do tego już definiowaną formułę $repl$ oraz $symb$ do czytelniejszego zapisu. 
+\begin{lstlisting}
+    Out:
+    Y[h+x] == Y[x] + F h + $\frac{1}{2}$ (F F01 + F10) h$^2$ +
+        + $\frac{1}{6}$ (F01 F10 + F (F01$^2$ + F11) + F (F F02 + F11) +
+        + F20) h$^3$ + $\frac{1}{24}$ (F01$^2$ F10 + 3 F10 F11 + F$^2$ (F F03 + F12) +
+        + F01 F20 + F (F01$^3$ + F02 F10 + 3 F01 F11 + F21) +
+        + 2 F (F02 F10 + F01 F11 + F (2 F01 F02 + F12) + F21) +
+        + F30) h$^4$ + O[h]$^5$
+\end{lstlisting}
+Definiujemy formułę trzeciego rzędu Ralstona, której parametry zostały już uzyskane osobno,~poprzez jak wspomniałem podobne kroki z założeniami napisanymi powyżej.
+\begin{lstlisting}
+    k1 = h F[x,Y[x]];
+    k2 = h F[x + $\frac{1}{2}$h,Y[x] + $\frac{1}{2}$k1];
+    k3 = h F[x + $\frac{3}{4}$h,Y[x] + 0k1 + $\frac{3}{4}$k2];
+    Y3 = Y[x] + $\frac{2}{9}$k1 + $\frac{1}{3}$k2 + $\br{1-\frac{2}{9}-\frac{1}{3}}$k3;
+\end{lstlisting}
+Konstruujemy kombinacje dającą drugi rząd, którą będziemy używać razem z powyższą formułą do kontroli błędu podczas całkowania toru ruchu promienia świetlnego, co można zauważyć przy $Y2$, która jest kombinacją dającą drugi rząd jednak z błędem $h^4$:
+\begin{lstlisting}
+    k4 = h F[x+h,Y3];
+    Y2 = Y[x] + b1k1 + b2k2 + b3k3 + (1-b1-b2-b3)k4;
+\end{lstlisting}
+Poniżej konstruujemy odpowiednik metody trójpunktowej, a więc z punktem pośrednim. Niech $x=a$,\quad $x+h=b$, natomiast punkt pośredni to pewne $c$~: $a<c<b$. Reguła Eulera byłaby nastepująca: $Yb=Ya+h F[c,Yc] $. Problemem tu jest nieznany parametr $c$. Można się jednak posłużyć kombinacją typu
+$Yb = Ya + b1~h F[a,Ya]+ b2~h F[a,Ya] + b3~F[c,Y] + (1 - b1 - b2 - b3)~h F[a,Ya]]$,~czyli mamy pewna średnia wagową z parametrami $b1, b2, b3, c$  do wyznaczenia przy pomocy jakiegoś optymalizującego kryterium. Uzyskujemy aproksymacje ,,trójpunktową"~YA3 do dokładności do trzeciego rzędu oraz aproksymację YA2, czyli oczekujemy dokładności 2-go rzędu.  Wybieramy dowolne współczynniki tak, by te rzędy zapewnić:
+\begin{lstlisting}
+    YA2 = Series[Y2,{h, 0, 3}] // symb // Simplify;
+    Print[Y[x+h],"==", YA2]
+    YA3 = Series[Y3,{h, 0, 4}] // symb // Simplify;
+    Print[Y[x+h],"==", YA3]
+\end{lstlisting}
+\begin{lstlisting}
+    Out:
+    Y[h+x] == Y[x] + F h - $\frac{1}{4}$((-4 + 4b1 + 2b2 + b3) (F F01 +
+        + F10)) h$^2$ +  $\frac{1}{32}$(4b2 (F$^2$ F02 + 2 F F11 + F20) -
+        - 16(-1 + b1 + b2 + b3) (F$^2$ F02 + F01 F10 +
+        + F (F01$^2$ + 2 F11) + F20) + 3b3(4 F F01$^2$ + 3 F$^2$ F02 + 
+        + 4 F01 F10 + 6 F F11 + 3 F20)) h$^3$ + O[h]$^4$
+    
+    Y[h+x] == Y[x] + F h + $\frac{1}{2}$(F F01 + F10) h$^2$ +
+        + $\frac{1}{6}$(F$^2$ F02 + F01 F10 + F (F01$^2$ + 2 F11) + F20) h$^3$ +
+        + $\frac{1}{288}$(11 F$^3$ F03 + 36 F10 F11 + F$^2$ (48 F01 F02 + 33 F12) +
+        + 12 F01 F20 + F (36 F02 F10 + 60 F01 F11 + 33 F21) +
+        + 11 F30) h$^4$ + O[h]$^5$
+\end{lstlisting}
+Pierwszy etap znalezienia odpowiedniego kryterium, to znaczy wyznaczenie rozwiązania dla parametru $b3$
+\begin{lstlisting}
+    sol = Flatten@ Solve[-2 + 4b1 + 2b2 + b3 == 0, b3]
+\end{lstlisting}
+\begin{lstlisting}
+    Out:
+    {b3$\rightarrow$-2 (-1 + 2b1 + b2)}
+\end{lstlisting}
+Kolejnym etapem jest porównanie odpowiednich parametrów z formuł trzeciego i drugiego rzędu. Związujemy w formule $tmp$ parametry o identycznych kombinacjach wyznaczając $b1$ oraz $b2$, aby później to wykorzystać do wyznaczenia parametrów $b$:
+\begin{lstlisting}
+    tmp = Flatten@ Solve[{-5 + 18b1 + 3b2 == A, 1 - 3b2 == B},
+        {b1, b2}];
+    sol1 = Flatten@ {sol /. tmp, tmp} // Simplify
+\end{lstlisting}
+\begin{lstlisting}
+    Out:
+    {b3$\rightarrow$ -$\frac{2}{9}$(A - 2(1 + B)), b1$\rightarrow$$\frac{1}{18}$(4 + A + B), b2$\rightarrow$$\frac{1 - B}{3}$}
+\end{lstlisting}
+Na koniec wyznaczenie parametrów używając wcześniejszego etapów z dodaniem parametru $\alpha$,~który jest naszym punktem środkowym w metodzie trójpunktowej, dzięki czemu zależnie od niego dostajemy rodzinę integratorów trzeciego rzędu.
+\begin{lstlisting}
+    sol2 = sol1 /. {A$\rightarrow$$\alpha$, B$\rightarrow$$\frac{1}{4}$$\alpha$} // Simplify
+\end{lstlisting}
+\begin{lstlisting}
+    Out:
+    {b3$\rightarrow$$\frac{4 - \alpha}{9}$, b1$\rightarrow$$\frac{2}{9}$ + $\frac{5 \alpha}{72}$, b2$\rightarrow$$\frac{4 - \alpha}{12}$}
+\end{lstlisting}
+Podsumowanie wyników dla $\alpha==1$:
+\begin{lstlisting}
+    k1 = h F[x, Y[x]];
+    k2 = h F[x + $\frac{1}{2}$h, Y[x] + $\frac{1}{2}$k1];
+    k3 = h F[x + $\frac{3}{4}$h, Y[x] + $\frac{3}{4}$k2];
+    k4 = h F[x + h, Y[x] + $\frac{2}{9}$k1 + $\frac{1}{3}$k2 + $\frac{4}{9}$k3];
+    Y[x] + $\frac{2}{9}$k1 + $\frac{1}{3}$k2 + $\frac{4}{9}$k3 + 0k4;
+\end{lstlisting}
+
+\section{Przykład zastosowania}\label{s:AA}
+Realizacja procedury kroku całkującego przez integrator oparty na metodzie Bogackiego-Shampine'a RK(3)2 na przykładzie oscylatora harmonicznego: 
+$$y'' + y == \frac{x}{2}\Rightarrow y1=y,\quad y2=y' \Rightarrow y1'=y2,\quad y2'=-y1+x \Rightarrow F[x_, y1_, y2_{}] = {y2, -y1 + \frac{x}{2}}$$
+z warunkami początkowymi $y(0) = 0$, $y'(0) = 2$. Przez parametry $a$ i $b$ określamy długość łuku,~który oscylator musi przebyć. $h$ określamy długość kroku całkowania, którym manewrujemy dzieląc długość drogi $(b-a)$ przez stałą $n$. Rysunki wygenerowane przez program ,,Oscy\_harm".
+\begin{lstlisting}
+    F[x_, y1_, y2_] = {y2, -y1 + x/2};
+    a = 0.; 
+    b = 6$\pi$;
+    y0 = 0;
+    dy0 = 2;
+    n = 400;
+    h = (b-a)/n;
+\end{lstlisting}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{grafika/Rys4_compressed.pdf}
+    \caption{Porównanie rozwiązania numerycznego (czerwona ciągła linia) z rozwiązaniem ścisłym (niebieska kropkowana linia). Oś rzędnych - $x$, oś odciętych - $f(x)$}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{grafika/Rys7_compressed.pdf}
+    \caption{Wielkość kroku, jaki integrator dobiera podczas całkowania. Oś rzędnych - indeks kroku $h_i$, oś odciętych - wartość kroku}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.65\textwidth]{grafika/Rys5_compressed.pdf}
+    \caption{Różnice między rozwiązaniem numerycznym i ścisłym dla różnych wartości parametru $n$, który dzieli krok początkowy $h$. Niebieska linia kropkowana wartość parametru $n = 50$; zielona linia kropkowana $n = 100$; czerwona linia kropkowana $n = 200$; żółta linia kropkowana $n = 400$. Oś rzędnych - $x$, oś odciętych - różnica pomiędzy wartością rozwiązania numerycznego YA, a wartością rozwiązania ścisłego YE, YA-YE}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.65\textwidth]{grafika/Rys6_compressed.pdf}
+    \caption{Różnice między rozwiązaniem numerycznym i ścisłym dla różnych wartości parametru $n$, który dzieli krok początkowy $h$. Przybliżenie na linie przy dzieleniu kroku przy parametrze $n = 200$ oraz $n = 400$. Oś rzędnych - $x$, oś odciętych - różnica pomiędzy wartością rozwiązania numerycznego YA, a wartością rozwiązania ścisłego YE, YA-YE}
+\end{figure}
+
+

@@ -1,0 +1,61 @@
+
+\indent
+Każdy układ równań różniczkowych zwyczajnych, niezależnie od liczby takich równań oraz rzędu poszczególnych równań, można sprowadzić do ogólnej postaci układu dynamicznego $$Y'(x)=F(x,Y(x)),$$ gdzie $x$ jest zmienną niezależną (zazwyczaj czasem) a $Y(x)$ jest wektorem poszukiwanych zmiennych konfiguracyjnych. Funkcja wektorowa F przyporządkowuje każdej wartości $x$ wektor pochodny $Y'$ zależny od zmiennej niezależnej $x$ (na ogół od czasu $t$). $Y'(x)$ interpretujemy jako wektor prędkości poruszającego się punktu $Y(t)$, zatem powyższe równanie opisuje pewien ruch w abstrakcyjnej przestrzeni  stanów konfiguracji takiego układu. Każde rozwiązanie tego równania będzie ruchem odbywającym się pod wpływem pola $F$,~fun\-kcja wektorowa $F$ określa w tej przestrzeni ciągłe pole wektorowe (przy założeniu, że funkcja ta jest ciągła). 
+
+Mając układ  równań różniczkowych zwyczajnych dowolnego rzędu, zawsze możemy go przekształcić do układu równań pierwszego rzędu przez wprowadzenie dodatkowych zmiennych niezależnych. W szczególności 
+gdy rozwiązujemy układ mechaniczny złożony z zespołu $N$ cząstek w~przestrzeni fizycznej, których położenia opisane są równaniami Newtona drugiego rzędu,~można przepisać je do równoważnego układu 6N równań pierwszego rzędu. Na koniec otrzymujemy układ równań bezwymiarowych przez przekształcenia w takim sposób, aby wszystkie funkcję miały wspólny argument.
+
+\subsection{Przykłady}
+
+\subsubsection{Cząstka w jednorodnym polu elektrycznym i jednorodnym polu magnetycznym}
+\indent Zakładamy, że pola $\vec{B}$ oraz $\vec{E}$ są jednorodne i wzajemnie równoległe (oba wektory są stałe w rozpatrywanym fragmencie przestrzeni i niezależne od czasu). Osie układu współrzędnych dobieramy tak, że $\vec{E}$ odpowiada kierunkowi wersora osi $z$. 
+Wówczas równania ruchu dla cząstki o masie $m$ i ładunku elektrycznym $q$ w tym polu
+$$m\ddot{\vec{r}}=q \vec{E}+q\dot{\vec{r}}\times\vec{B}$$ przybierają postać następujących $3$ liniowych równań różniczkowych zwyczajnych  drugiego rzędu
+$$m\ddot{x}=q B \dot{y},\qquad
+m\ddot{y}=-q B \dot{x}, \qquad
+m\ddot{z}=q E.$$ %
+Po wprowadzeniu prędkości $v_x\equiv\dot{x}$, $v_y\equiv\dot{y}$ oraz $v_z\equiv\dot{z}$, równania powyższe przybierają postać równoważną układowi $6$ liniowych równań różniczkowych zwyczajnych pierwszego rzędu
+$$
+\dot{v}_x=\frac{q B}{m} v_y,\qquad \dot{x}=v_x,\qquad
+\dot{v}_y=-\frac{q B}{m} v_x,\qquad\dot{y}=v_y,\qquad
+\dot{v}_z=\frac{q E}{m},\qquad\dot{z}=v_z.$$
+Dalej, wprowadzając bezwymiarową zmienną fazową $\phi\equiv \frac{Bq}{m}t$ w miejsce czasu,  skalę długości $r_o=\frac{Em}{B^2q}$ oraz skalę prędkości $v_o=\frac{E}{B}$, otrzymuje się równowazny układ równań bezwymiarowych
+$$\psi_1'=\psi_2,\qquad \psi_2'=-\psi_1,\qquad \psi_3'=1,\qquad \xi_1'=\psi_1,\qquad \xi_2'=\psi_2
+,\qquad \xi_3'=\psi_3,$$ gdzie 
+$x(t)\equiv r_o\,\xi_1(\phi)$, $v_x(t)\equiv v_o\,\psi_1(\phi)$,
+$y(t)\equiv r_o\,\xi_2(\phi)$, $v_y(t)\equiv v_o\,\psi_2(\phi)$,
+$z(t)\equiv r_o\,\xi_3(\phi)$, $v_z(t)\equiv v_o\,\psi_3(\phi)$, a argumentem wszystkich funkcji jest zmienna niezależna $\phi$. Wprowadzając teraz wektor $Y=[\xi_1,\xi_2,\xi_3,\psi_1,\psi_2,\psi_3]$, odwzorowanie $F$ odpowiadające rozważanemu zagadnieniu ruchu zadane jest układem liniowym 
+$$\left[\begin{array}{c}
+y'_1\\y'_2\\y'_3\\y'_4\\y'_5\\y'_6\end{array}\right]=
+F(\phi,Y)\equiv\left[\begin{array}{cccccc}
+0 & 0 & 0 & 1 & 0 & 0\\
+0 & 0 & 0 & 0 & 1 & 0\\
+0 & 0 & 0 & 0 & 0 & 1\\
+0 & 0 & 0 & 0 & 1 & 0\\
+0 & 0 & 0 & -1 & 0 & 0\\
+0 & 0 & 0 & 0 & 0 & 0\\
+\end{array}\right]\cdot \left[\begin{array}{c}
+y_1\\y_2\\y_3\\y_4\\y_5\\y_6\end{array}\right]+\left[\begin{array}{c}
+0\\0\\0\\0\\0\\1\end{array}\right] .$$
+
+\subsubsection{Odwzorowanie $F(\chi,Y)$ odpowiadające zredukowanym równaniom toru promienia świetlnego}
+W poprzednich rozważaniach uzyskaliśmy układ zredukowanych równań toru ruchu promienia świetlengo:
+$$
+\left\{\begin{array}{l}
+  \dot{x}=\cos{\varphi} \\ 
+  \dot{y}=\sin{\varphi} \\
+  \dot{\varphi}=\nu_{,y}\cos{\varphi}-\nu_{,x}\sin{\varphi}
+\end{array}\right.
+$$
+Dodatkowo, aby móc analizować krzywą promienia, do powyższego układu równań wprowadzamy zmienną czasową $t$ będącą funkcją długości łuku $s$ i zdefiniowaną według wzoru:
+$$t-t_0=\int\limits_{s_0}^{s_1}\!\! \frac{ds}{v}=\int\limits_{s_0}^{s_1}\!\! \frac{ds}{c}n,$$
+z skąd wynika równanie różniczkowe:
+$$\dot{t}=\frac{dt}{ds}=\frac{n}{c},$$
+gdzie $t_0$ jest chwilą początkową odpowiadającą parametrowi $s_0$.
+Przyjmując bezwymiarową zmienną czasową $\tau=c t$ otrzymujemy dodatkowe równanie postaci:
+$$\tau=\frac{\ud{\tau}}{\ud{s}}=n(x,y)=e^{\nu(x,y)}.$$
+Aby skonstruować odpowiadające temu układowi równań różniczkowych odwzorowanie $F(\chi,Y(\chi))$,~przyjmujemy nastepujące pryporządkowania: $s\to \chi$, $x \to y_1$, $y \to y_2$, $\phi \to y_3$, $\tau \to y_4$, skąd $\dot{x} \to y'_1$, $\dot{y} \to y'_2$, $\dot{\varphi} \to y'_3$,  $\dot{\tau} \to y'_4$:\\
+$$\begin{matrix}
+F(\chi,Y)=F(s,y'_1,y'_2,y'_3,y'_4)=(cos(y_3),~sin(y_3),\\ 
+\nu_{,y}(y_1,y_2)cos(y_3)-\nu_{,x}(y_1,y_2)sin(y_3),~e^{\nu(y_1,y_2).})
+\end{matrix}$$

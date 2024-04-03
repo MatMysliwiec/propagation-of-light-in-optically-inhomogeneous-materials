@@ -1,0 +1,1741 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     59561,       1732]
+NotebookOptionsPosition[     58378,       1696]
+NotebookOutlinePosition[     58824,       1713]
+CellTagsIndexPosition[     58781,       1710]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+Wydruk programu ,,Ukl_socz\[CloseCurlyDoubleQuote] do wytworzenia rysunk\
+\[OAcute]w do uk\[LSlash]adu dw\[OAcute]ch soczewek\
+\>", "Text",
+ CellChangeTimes->{{3.8832225917231684`*^9, 3.8832225938995304`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Exit", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.880953738745685*^9, 3.880953740955885*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"KadaptRK3BS", "[", "XY_", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"k1", ",", "k2", ",", "k3", ",", "k4", ",", 
+      RowBox[{"x", "=", 
+       RowBox[{"First", "@", "XY"}]}], ",", 
+      RowBox[{"Y", "=", 
+       RowBox[{"Drop", "[", 
+        RowBox[{"XY", ",", "1"}], "]"}]}], ",", "\[CapitalDelta]Y23", ",", 
+      "\[CapitalDelta]k", ",", "hstare"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"hstare", "=", " ", "h"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"k1", "=", 
+      RowBox[{"h", " ", "FIO"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"k2", "=", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"h", " ", 
+         RowBox[{"F", "[", 
+          RowBox[{
+           RowBox[{"x", "+", 
+            RowBox[{
+             FractionBox["1", "2"], "h"}]}], ",", "##"}], "]"}]}], "&"}], "@@", 
+       RowBox[{"(", 
+        RowBox[{"Y", "+", 
+         RowBox[{
+          FractionBox["1", "2"], "k1"}]}], ")"}]}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"k3", "=", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"h", " ", 
+         RowBox[{"F", "[", 
+          RowBox[{
+           RowBox[{"x", "+", 
+            RowBox[{
+             FractionBox["3", "4"], "h"}]}], ",", "##"}], "]"}]}], "&"}], "@@", 
+       RowBox[{"(", 
+        RowBox[{"Y", "+", 
+         RowBox[{
+          FractionBox["3", "4"], "k2"}]}], ")"}]}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Y3", "=", 
+      RowBox[{"Y", "+", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          FractionBox["2", "9"], "k1"}], "+", 
+         RowBox[{
+          FractionBox["1", "3"], "k2"}], "+", 
+         RowBox[{
+          FractionBox["4", "9"], "k3"}]}], ")"}]}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"FIO", "=", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"F", "[", 
+         RowBox[{
+          RowBox[{"x", "+", "h"}], ",", "##"}], "]"}], "&"}], "@@", "Y3"}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"k4", "=", 
+      RowBox[{"h", " ", "FIO"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"\[CapitalDelta]Y23", "=", 
+      RowBox[{"Abs", "[", 
+       RowBox[{
+        FractionBox["1", "72"], 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"5", "k1"}], "-", 
+          RowBox[{"6", "k2"}], "-", 
+          RowBox[{"8", "k3"}], "+", 
+          RowBox[{"9", "k4"}]}], ")"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"\[CapitalDelta]k", "=", 
+      RowBox[{"Max", "@", 
+       FractionBox["\[CapitalDelta]Y23", 
+        RowBox[{
+         RowBox[{"Abs", "[", "Y3", "]"}], "+", 
+         RowBox[{"Abs", "[", 
+          RowBox[{"Y3", "-", "Y"}], "]"}]}]]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"h", "=", 
+      RowBox[{"hstare", " ", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"\[Delta]", ">", "\[CapitalDelta]k"}], ",", 
+         RowBox[{"Min", "[", 
+          RowBox[{
+           SuperscriptBox[
+            RowBox[{"(", 
+             FractionBox["\[Delta]", "\[CapitalDelta]k"], ")"}], 
+            RowBox[{"1", "/", "3"}]], ",", "5"}], "]"}], ",", 
+         RowBox[{"Max", "[", 
+          RowBox[{
+           SuperscriptBox[
+            RowBox[{"(", 
+             FractionBox["\[Delta]", "\[CapitalDelta]k"], ")"}], 
+            RowBox[{"1", "/", "3"}]], ",", 
+           RowBox[{"1", "/", "5"}]}], "]"}]}], "]"}]}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"ndone", "++"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Flatten", "@", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"x", "+", "hstare"}], ",", "Y3"}], "}"}]}]}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.880953715499525*^9, 3.8809537317307158`*^9}, {
+  3.8809556113546076`*^9, 3.8809556464283876`*^9}, {3.8809557568059607`*^9, 
+  3.880955766957163*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"makeGraph", "[", 
+   RowBox[{
+    RowBox[{"iniDat_:", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "6"}], ",", 
+       RowBox[{"-", "1.5"}], ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "80"}], ",", "0"}], "}"}]}], ",", 
+    RowBox[{"P_:", "0.8"}], ",", 
+    RowBox[{"\[Lambda]_:", "400"}]}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "graf", ",", "hstart", ",", "\[Nu]", ",", "d\[Nu]x", ",", "d\[Nu]y", ",", 
+      RowBox[{"\[Lambda]1", "=", "400"}], ",", 
+      RowBox[{"\[Lambda]2", "=", "720"}], ",", 
+      RowBox[{"\[Epsilon]", "=", "0.2"}], ",", 
+      RowBox[{"kolor", "=", 
+       RowBox[{
+        RowBox[{"ColorData", "[", "\"\<VisibleSpectrum\>\"", "]"}], "[", 
+        "\[Lambda]", "]"}]}]}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"w", "=", "6"}], ",", 
+       RowBox[{"v", "=", "0.2"}], ",", 
+       RowBox[{"a", "=", "1"}], ",", 
+       RowBox[{"b", "=", "0.9"}], ",", 
+       RowBox[{"ro", "=", "0.9"}], ",", 
+       RowBox[{"u", "=", 
+        SqrtBox[
+         RowBox[{
+          SuperscriptBox[
+           RowBox[{"(", 
+            FractionBox["x", "a"], ")"}], "2"], "+", 
+          SuperscriptBox[
+           RowBox[{"(", 
+            FractionBox["y", "b"], ")"}], "2"]}]]}]}], "}"}], ";", 
+     RowBox[{"n1", "=", 
+      RowBox[{"1", "+", 
+       RowBox[{"P", 
+        RowBox[{"(", 
+         RowBox[{
+          FractionBox[
+           RowBox[{"1", "+", 
+            RowBox[{"Exp", "[", 
+             RowBox[{
+              RowBox[{"-", "ro"}], "/", "v"}], "]"}]}], 
+           RowBox[{"1", "+", 
+            RowBox[{"Exp", "[", 
+             RowBox[{"u", "-", 
+              RowBox[{"ro", "/", "v"}]}], "]"}]}]], "+", 
+          FractionBox[
+           RowBox[{"(", 
+            RowBox[{"x", "-", "1"}], ")"}], 
+           RowBox[{"1", "+", 
+            RowBox[{"Exp", "[", 
+             RowBox[{"u", "-", 
+              RowBox[{"ro", "/", "v"}]}], "]"}]}]]}], ")"}]}]}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"nn", "[", 
+       RowBox[{"x_", ",", "y_"}], "]"}], "=", 
+      RowBox[{"n1", "+", 
+       FractionBox[
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"-", "1"}], "+", "n1"}], ")"}], "\[Epsilon]", 
+         RowBox[{"(", 
+          RowBox[{
+           SuperscriptBox["\[Lambda]", "2"], "-", 
+           SuperscriptBox["\[Lambda]1", "2"]}], ")"}], 
+         SuperscriptBox["\[Lambda]2", "2"]}], 
+        RowBox[{
+         SuperscriptBox["\[Lambda]", "2"], 
+         RowBox[{"(", 
+          RowBox[{
+           SuperscriptBox["\[Lambda]1", "2"], "-", 
+           SuperscriptBox["\[Lambda]2", "2"]}], ")"}]}]]}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"gWsp", "=", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"nn", "[", 
+         RowBox[{"x", ",", "0"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", 
+          RowBox[{"-", "w"}], ",", "w"}], "}"}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"All", ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "3"}], "}"}]}], "}"}]}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"tlo", "=", 
+      RowBox[{"ContourPlot", "[", 
+       RowBox[{
+        RowBox[{"nn", "[", 
+         RowBox[{"x", ",", "y"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", 
+          RowBox[{"-", "w"}], ",", "w"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"y", ",", 
+          RowBox[{"-", "w"}], ",", "w"}], "}"}], ",", 
+        RowBox[{"Contours", "\[Rule]", "29"}], ",", 
+        RowBox[{"PlotPoints", "\[Rule]", "39"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"\[Nu]", "[", 
+       RowBox[{"x_", ",", "y_"}], "]"}], "=", 
+      RowBox[{"Log", "@", 
+       RowBox[{"(", 
+        RowBox[{"nn", "[", 
+         RowBox[{"x", ",", "y"}], "]"}], ")"}]}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"d\[Nu]x", "[", 
+       RowBox[{"x_", ",", "y_"}], "]"}], "=", 
+      RowBox[{"D", "[", 
+       RowBox[{
+        RowBox[{"\[Nu]", "[", 
+         RowBox[{"x", ",", "y"}], "]"}], ",", "x"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"d\[Nu]y", "[", 
+       RowBox[{"x_", ",", "y_"}], "]"}], "=", 
+      RowBox[{"D", "[", 
+       RowBox[{
+        RowBox[{"\[Nu]", "[", 
+         RowBox[{"x", ",", "y"}], "]"}], ",", "y"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"F", "[", 
+       RowBox[{"s_", ",", "x_", ",", "y_", ",", "\[Phi]_", ",", "t_"}], "]"}],
+       "=", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Cos", "[", "\[Phi]", "]"}], ",", 
+         RowBox[{"Sin", "[", "\[Phi]", "]"}], ",", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"d\[Nu]y", "[", 
+            RowBox[{"x", ",", "y"}], "]"}], 
+           RowBox[{"Cos", "[", "\[Phi]", "]"}]}], "-", 
+          RowBox[{
+           RowBox[{"d\[Nu]x", "[", 
+            RowBox[{"x", ",", "y"}], "]"}], 
+           RowBox[{"Sin", "[", "\[Phi]", "]"}]}]}], ",", 
+         RowBox[{"Exp", "@", 
+          RowBox[{"(", 
+           RowBox[{"\[Nu]", "[", 
+            RowBox[{"x", ",", "y"}], "]"}], ")"}]}]}], "}"}], "//", 
+       "Simplify"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"s0", ",", "s1"}], "}"}], "=", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "\[Infinity]"}], "}"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{
+      StyleBox[
+       RowBox[{"{", 
+        RowBox[{"x0", ",", "y0", ",", "\[Phi]0", ",", "t0"}], "}"}],
+       FontColor->GrayLevel[0]], "=", "iniDat"}], ";", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"hstart", "[", "]"}], ":=", 
+      RowBox[{"Module", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+         "f", ",", "df", ",", "fdf", ",", "Y0", ",", "x", ",", "y", ",", 
+          "\[Phi]", ",", "t", ",", "s", ",", "tmp"}], "}"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Y0", "=", 
+          RowBox[{"Abs", "[", 
+           RowBox[{"{", 
+            RowBox[{"x0", ",", "y0", ",", "\[Phi]0"}], "}"}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"f", "=", 
+          RowBox[{"Take", "[", 
+           RowBox[{
+            RowBox[{"F", "[", 
+             RowBox[{"s0", ",", "x0", ",", "y0", ",", "\[Phi]0", ",", "t0"}], 
+             "]"}], ",", "3"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"df", "=", 
+          RowBox[{"Transpose", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"D", "[", 
+                   RowBox[{
+                    RowBox[{"Take", "[", 
+                    RowBox[{
+                    RowBox[{"F", "[", 
+                    RowBox[{
+                    "s", ",", "x", ",", "y", ",", "\[Phi]", ",", "t"}], "]"}],
+                     ",", "3"}], "]"}], ",", "#"}], "]"}], "&"}], "/@", 
+                 RowBox[{"{", 
+                  RowBox[{"x", ",", "y", ",", "\[Phi]"}], "}"}]}], ")"}], "/.", 
+               RowBox[{"s", "\[Rule]", "s0"}]}], "/.", 
+              RowBox[{"x", "\[Rule]", "x0"}]}], "/.", 
+             RowBox[{"y", "\[Rule]", "y0"}]}], "/.", 
+            RowBox[{"\[Phi]", "\[Rule]", "\[Phi]0"}]}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"fdf", "=", 
+          RowBox[{"Abs", "[", 
+           RowBox[{"f", ".", "df"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"tmp", "=", 
+          RowBox[{"Flatten", "@", 
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"fdf", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], ">", "0"}], ",", 
+               RowBox[{"Min", "[", 
+                RowBox[{
+                 SqrtBox[
+                  FractionBox[
+                   RowBox[{"2", 
+                    RowBox[{"Y0", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}]}], 
+                   RowBox[{"fdf", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}]]], ",", 
+                 FractionBox[
+                  RowBox[{"Abs", "[", 
+                   RowBox[{"f", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], "]"}], 
+                  RowBox[{"fdf", "[", 
+                   RowBox[{"[", "i", "]"}], "]"}]]}], "]"}], ",", 
+               "\[Infinity]"}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "1", ",", "3"}], "}"}]}], "]"}]}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          SqrtBox["\[Delta]"], 
+          RowBox[{"Min", "@", "tmp"}]}]}]}], "]"}]}], ";", "\n", 
+     RowBox[{"Clear", "[", 
+      RowBox[{"sol", ",", "tor"}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"\[Delta]", "=", 
+        SuperscriptBox["10", 
+         RowBox[{"-", "8"}]]}], ",", 
+       RowBox[{"h", "=", 
+        RowBox[{"hstart", "[", "]"}]}], ",", 
+       RowBox[{"hmax", "=", "\[Infinity]"}], ",", 
+       RowBox[{"nmax", "=", "10000"}], ",", 
+       RowBox[{"ndone", "=", "0"}], ","}], "}"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"FIO", "=", 
+      RowBox[{"F", "[", 
+       RowBox[{"s0", ",", "x0", ",", "y0", ",", "\[Phi]0", ",", "0"}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"sol", "=", 
+      RowBox[{"NestWhileList", "[", 
+       RowBox[{"KadaptRK3BS", ",", 
+        RowBox[{"{", 
+         RowBox[{"s0", ",", "x0", ",", "y0", ",", "\[Phi]0", ",", "t0"}], 
+         "}"}], ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"w", "\[GreaterEqual]", 
+            RowBox[{"Abs", "[", 
+             RowBox[{"#", "[", 
+              RowBox[{"[", "2", "]"}], "]"}], "]"}]}], "&&", 
+           RowBox[{"w", "\[GreaterEqual]", 
+            RowBox[{"Abs", "[", 
+             RowBox[{"#", "[", 
+              RowBox[{"[", "3", "]"}], "]"}], "]"}]}], "&&", 
+           RowBox[{
+            RowBox[{"#", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "<", "s1"}], "&&", 
+           RowBox[{"ndone", "<", "nmax"}]}], ")"}], "&"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{"\"\<ndone= \>\"", ",", "ndone"}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"tor", "[", "tkolor_", "]"}], ":=", 
+      RowBox[{"ListPlot", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"#", "[", 
+             RowBox[{"[", "2", "]"}], "]"}], ",", 
+            RowBox[{"#", "[", 
+             RowBox[{"[", 
+              StyleBox["3",
+               FontColor->GrayLevel[0]], "]"}], "]"}]}], "}"}], "&"}], "/@", 
+         "sol"}], ",", 
+        RowBox[{"Joined", "\[Rule]", "True"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "tkolor"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"graf", "=", 
+      RowBox[{"Show", "[", 
+       RowBox[{
+        RowBox[{"tor", "[", "kolor", "]"}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+        RowBox[{"AspectRatio", "\[Rule]", "1"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{"Show", "[", 
+       RowBox[{"{", 
+        RowBox[{"tlo", ",", "graf"}], "}"}], "]"}], "]"}], ";", 
+     "\[IndentingNewLine]", "graf"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.8818309093177214`*^9, 3.881830910417497*^9}, {
+   3.8818310369365654`*^9, 3.881831059809017*^9}, {3.881831157615926*^9, 
+   3.8818312163835497`*^9}, {3.881831255607973*^9, 3.8818312641157203`*^9}, {
+   3.8818313332597103`*^9, 3.8818313872749004`*^9}, {3.881831441795866*^9, 
+   3.8818314783273325`*^9}, {3.8818315203759155`*^9, 3.881831578765867*^9}, 
+   3.881831621754217*^9, {3.881831653227845*^9, 3.8818316791536417`*^9}, {
+   3.8818317903314896`*^9, 3.8818317907614803`*^9}, {3.8818319302111607`*^9, 
+   3.881831931591161*^9}, {3.881831981721631*^9, 3.8818320055640306`*^9}, {
+   3.881850575659775*^9, 3.8818506789450183`*^9}, {3.881850737635543*^9, 
+   3.8818509128326225`*^9}, {3.8818509621505747`*^9, 3.881850964666933*^9}, {
+   3.881851105570012*^9, 3.8818511069363637`*^9}, {3.8818513651918507`*^9, 
+   3.8818513831583843`*^9}, {3.881851835801152*^9, 3.8818518373338428`*^9}, {
+   3.881851886618449*^9, 3.881852023204157*^9}, {3.88186154500287*^9, 
+   3.881861550853518*^9}, {3.8818623530349555`*^9, 3.881862378576775*^9}, {
+   3.88186242258653*^9, 3.8818624231198454`*^9}, {3.881862463437877*^9, 
+   3.8818624814710455`*^9}, {3.8818626532915583`*^9, 
+   3.8818626826402826`*^9}, {3.881862727375496*^9, 3.8818627396868343`*^9}, 
+   3.8818628233278484`*^9, 3.881862862862104*^9, {3.881863087565784*^9, 
+   3.8818631034169407`*^9}, {3.8818631625339875`*^9, 3.881863203401721*^9}, {
+   3.881863357338235*^9, 3.8818633578548574`*^9}, {3.8818634006055546`*^9, 
+   3.8818634864740767`*^9}, {3.8818635412250547`*^9, 
+   3.8818636113093667`*^9}, {3.8818636549606934`*^9, 
+   3.8818636632440915`*^9}, {3.881863865381437*^9, 3.881863865914658*^9}, {
+   3.8818639179820604`*^9, 3.881863959750141*^9}, 3.881864037821696*^9, {
+   3.881864069869088*^9, 3.881864113426676*^9}, {3.8818641517533174`*^9, 
+   3.8818641832372026`*^9}, {3.8818642736392603`*^9, 
+   3.8818642851896815`*^9}, {3.8818643264069614`*^9, 3.881864337238144*^9}, {
+   3.8818643688911715`*^9, 3.881864505520299*^9}, {3.8818648377834215`*^9, 
+   3.881864856500402*^9}, {3.8818648890513763`*^9, 3.881864937756148*^9}, {
+   3.8818649908700547`*^9, 3.8818651608566933`*^9}, {3.881865235958146*^9, 
+   3.8818652659254203`*^9}, {3.881865308717425*^9, 3.881865318043166*^9}, {
+   3.8818653618484383`*^9, 3.881865370310478*^9}, {3.881865415878484*^9, 
+   3.8818654386118364`*^9}, 3.8818654698460464`*^9, 3.8818655014298983`*^9, {
+   3.8818655427138443`*^9, 3.8818655512973566`*^9}, {3.8818656035819874`*^9, 
+   3.8818656305495234`*^9}, {3.882148070804555*^9, 3.8821481632046556`*^9}, {
+   3.8821481990071735`*^9, 3.8821484915096903`*^9}, {3.882148563554813*^9, 
+   3.882148564279765*^9}, {3.8821486241281753`*^9, 3.882149261200571*^9}, {
+   3.8821557317871914`*^9, 3.8821557322982645`*^9}, 3.882155910690654*^9, {
+   3.8821559548031244`*^9, 3.882155957000614*^9}, {3.8821560272470098`*^9, 
+   3.8821560621330566`*^9}, {3.882156549668101*^9, 3.8821565505932856`*^9}, {
+   3.882156733559415*^9, 3.8821567336372933`*^9}, {3.882159744409459*^9, 
+   3.8821597818631706`*^9}, {3.8821598235919085`*^9, 
+   3.8821598237631435`*^9}, {3.882159878221833*^9, 3.8821598795535975`*^9}, {
+   3.8821647290618544`*^9, 3.8821647572593412`*^9}, {3.883213473417934*^9, 
+   3.883213474025402*^9}}],
+
+Cell["Rysunek 7.13a", "Text",
+ CellChangeTimes->{{3.8832136543293*^9, 3.883213658616963*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"gr20", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "6"}], ",", 
+       RowBox[{"-", "1.1"}], ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "20"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "650"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"go20", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "6"}], ",", 
+       RowBox[{"-", "1.1"}], ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "20"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "615"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gy20", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "6"}], ",", 
+       RowBox[{"-", "1.1"}], ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "20"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "590"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gg20", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "6"}], ",", 
+       RowBox[{"-", "1.1"}], ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "20"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "510"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gb20", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "6"}], ",", 
+       RowBox[{"-", "1.1"}], ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "20"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "470"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gp20", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "6"}], ",", 
+       RowBox[{"-", "1.1"}], ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "20"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "410"}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.8832136674153023`*^9, 3.8832137261666093`*^9}, {
+  3.8832138062437754`*^9, 3.8832138209689507`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Show", "[", 
+  RowBox[{"{", 
+   RowBox[{
+   "tlo", ",", "gr20", ",", "go20", ",", "gy20", ",", "gg20", ",", "gb20", 
+    ",", "gp20"}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.8832138408271027`*^9, 3.8832138646145086`*^9}}],
+
+Cell["Rysunek 7.13b", "Text",
+ CellChangeTimes->{{3.883213876555518*^9, 3.8832138873764114`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"gr335", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "4.5"}], ",", 
+       RowBox[{"-", "0.1"}], ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "335"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "650"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"go335", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "4.5"}], ",", 
+       RowBox[{"-", "0.1"}], ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "335"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "615"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gy335", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "4.5"}], ",", 
+       RowBox[{"-", "0.1"}], ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "335"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "590"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gg335", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "4.5"}], ",", 
+       RowBox[{"-", "0.1"}], ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "335"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "510"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gb335", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "4.5"}], ",", 
+       RowBox[{"-", "0.1"}], ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "335"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "470"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gp335", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "4.5"}], ",", 
+       RowBox[{"-", "0.1"}], ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "335"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "410"}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.883213897734046*^9, 3.8832139523888936`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Show", "[", 
+  RowBox[{"{", 
+   RowBox[{
+   "tlo", ",", "gr335", ",", "go335", ",", "gy335", ",", "gg335", ",", 
+    "gb335", ",", "gp335"}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.883213974843115*^9, 3.8832140015241814`*^9}}],
+
+Cell["Rysunek 7.14a", "Text",
+ CellChangeTimes->{{3.8832135507556973`*^9, 3.883213567194215*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"gr179", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"5", ",", 
+       RowBox[{"-", "2"}], ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "179"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "650"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"go179", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"5", ",", 
+       RowBox[{"-", "2"}], ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "179"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "615"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gy179", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"5", ",", 
+       RowBox[{"-", "2"}], ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "179"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "590"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gg179", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"5", ",", 
+       RowBox[{"-", "2"}], ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "179"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "510"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gb179", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"5", ",", 
+       RowBox[{"-", "2"}], ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "179"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "470"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gp179", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"5", ",", 
+       RowBox[{"-", "2"}], ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "179"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "410"}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.882158072835894*^9, 3.8821581227468824`*^9}, {
+  3.8821581571785135`*^9, 3.8821581617991476`*^9}, {3.8821582241140337`*^9, 
+  3.882158321913438*^9}, {3.8821593092932673`*^9, 3.8821594004083133`*^9}, {
+  3.8821652754908857`*^9, 3.882165327757905*^9}, {3.8822629087067394`*^9, 
+  3.88226294109781*^9}, {3.8822629865591307`*^9, 3.882262991309104*^9}, {
+  3.8829810527538843`*^9, 3.882981087526528*^9}, {3.882981132807473*^9, 
+  3.882981157554878*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Show", "[", 
+  RowBox[{"{", 
+   RowBox[{
+   "tlo", ",", "gr179", ",", "go179", ",", "gy179", ",", "gg179", ",", 
+    "gb179", ",", "gp179"}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.8821594494761033`*^9, 3.882159470877287*^9}, {
+  3.8829810966724463`*^9, 3.8829811106303444`*^9}, {3.8829811603704023`*^9, 
+  3.882981172181676*^9}}],
+
+Cell["Rysunek 7.14b", "Text",
+ CellChangeTimes->{{3.883213582740475*^9, 3.8832135841245284`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"gr79", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", 
+       RowBox[{"-", "6"}], ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "79"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "650"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"go79", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", 
+       RowBox[{"-", "6"}], ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "79"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "615"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gy79", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", 
+       RowBox[{"-", "6"}], ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "79"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "590"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gg79", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", 
+       RowBox[{"-", "6"}], ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "79"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "510"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gb79", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", 
+       RowBox[{"-", "6"}], ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "79"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "470"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gp79", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", 
+       RowBox[{"-", "6"}], ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "79"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "410"}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{
+  3.882159507145782*^9, {3.882159922756134*^9, 3.8821600058330545`*^9}, {
+   3.8821653845097237`*^9, 3.882165453157939*^9}, {3.8822630187808013`*^9, 
+   3.8822630224476337`*^9}, {3.88298118851999*^9, 3.882981203638385*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Show", "[", 
+  RowBox[{"{", 
+   RowBox[{
+   "tlo", ",", "gr79", ",", "go79", ",", "gy79", ",", "gg79", ",", "gb79", 
+    ",", "gp79"}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.8821600702999754`*^9, 3.882160079346684*^9}, {
+  3.8829812069079103`*^9, 3.8829812221024427`*^9}}],
+
+Cell["Rysunek 7.15", "Text",
+ CellChangeTimes->{{3.8832134944426823`*^9, 3.883213498600089*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"gr135", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "135"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "650"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"go135", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "135"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "615"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gy135", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "135"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "590"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gg135", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "135"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "510"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gb135", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "135"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "470"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gp135", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "135"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "410"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gr150", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "150"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "650"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"go150", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "150"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "615"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gy150", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "150"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "590"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gg150", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "150"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "510"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gb150", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "150"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "470"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gp150", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "150"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "410"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gr165", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "165"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "650"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"go165", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "165"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "615"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gy165", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "165"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "590"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gg165", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "165"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "510"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gb165", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "165"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "470"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gp165", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "165"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "410"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gr180", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "179.9"}], ",", "0"}], "}"}], ",", 
+     "0.35", ",", "650"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"go180", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "179.9"}], ",", "0"}], "}"}], ",", 
+     "0.35", ",", "615"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gy180", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", 
+       RowBox[{"0.01", 
+        FractionBox["\[Pi]", "180"], "179.9"}], ",", "0"}], "}"}], ",", 
+     "0.35", ",", "590"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gg180", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "179.9"}], ",", "0"}], "}"}], ",", 
+     "0.35", ",", "510"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gb180", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "179.9"}], ",", "0"}], "}"}], ",", 
+     "0.35", ",", "470"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gp180", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "179.9"}], ",", "0"}], "}"}], ",", 
+     "0.35", ",", "410"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gr195", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "195"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "650"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"go195", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "195"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "615"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gy195", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "195"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "590"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gg195", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "195"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "510"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gb195", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "195"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "470"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gp195", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "195"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "410"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gr210", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "210"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "650"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"go210", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "210"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "615"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gy210", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "210"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "590"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gg210", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "210"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "510"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gb210", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "210"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "470"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gp210", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "210"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "410"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gr225", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "225"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "650"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"go225", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "225"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "615"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gy225", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "225"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "590"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gg225", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "225"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "510"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gb225", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "225"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "470"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gp225", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"6", ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "225"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "410"}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGCQAGIQ3TVj9945b9449u8IOwKiT+SlCS8A0hopE8B0xJbz
+UiB6ep+HLIj2trJSBtFNLrPUQDSrW5wxiI5bcMscRF/5u9YFRHNEPAbTTtMD
+gkC0qKRHMIjeM/VsGog+lZuaB6LdBJ3LQfQD3jmVIPrH6RVtIDoz5XAviHaf
+qjkTRAdNNQbTzXcvLwbRPc5iK0E0w4vQMwuBdIwg81kQHSVVegtEZ/4SuwOi
+jcPfuiwB0hYC911BdI/aRl8QvfZLoz+IVlpwkvkKkK7yqWIF0QrG27jBtNlZ
+SRAtEdbwg+ftG0eP9ON/QHSVcwEHL5BOKDzBD6Jf3RQQB9GMr6TAdNbPG0og
+erq9mhuI3tb6OgBEZy7JiQDRDzjKpxu9e+N474fiEhANAC1T1Ns=
+  "]],
+
+Cell[BoxData[
+ RowBox[{"Show", "[", 
+  RowBox[{"{", 
+   RowBox[{
+   "tlo", ",", "gr135", ",", "go135", ",", "gy135", ",", "gg135", ",", 
+    "gb135", ",", "gp135", ",", "gr150", ",", "go150", ",", "gy150", ",", 
+    "gg150", ",", "gb150", ",", "gp150", ",", "gr165", ",", "go165", ",", 
+    "gy165", ",", "gg165", ",", "gb165", ",", "gp165", ",", "gr180", ",", 
+    "go180", ",", "gy180", ",", "gg180", ",", "gb180", ",", "gp180", ",", 
+    "gr195", ",", "go195", ",", "gy195", ",", "gg195", ",", "gb195", ",", 
+    "gp195", ",", "gr210", ",", "go210", ",", "gy210", ",", "gg210", ",", 
+    "gb210", ",", "gp210", ",", "gr225", ",", "go225", ",", "gy225", ",", 
+    "gg225", ",", "gb225", ",", "gp225"}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.882156368596995*^9, 3.882156382456884*^9}, {
+   3.882156508174226*^9, 3.882156510940357*^9}, {3.882157303423421*^9, 
+   3.88215732322198*^9}, {3.8821574308135223`*^9, 3.8821574435395594`*^9}, 
+   3.8823798955702915`*^9, {3.8829806479415627`*^9, 3.8829807890439034`*^9}}],
+
+Cell["Rysunek 7.16", "Text",
+ CellChangeTimes->{{3.8832135211294923`*^9, 3.8832135252344065`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"gr45", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "45"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "650"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"go45", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "45"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "615"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gy45", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "45"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "590"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gg45", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "45"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "510"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gb45", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "45"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "470"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gp45", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "45"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "410"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gr30", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "30"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "650"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"go30", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "30"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "615"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gy30", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "30"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "590"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gg30", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "30"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "510"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gb30", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "30"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "470"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gp30", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "30"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "410"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gr15", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "15"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "650"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"go15", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "15"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "615"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gy15", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "15"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "590"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gg15", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "15"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "510"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gb15", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "15"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "470"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gp15", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "15"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "410"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gr0", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "0.1"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "650"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"go0", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "0.1"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "615"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gy0", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "0.1"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "590"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gg0", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "0.1"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "510"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gb0", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "0.1"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "470"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gp0", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "0.1"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "410"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gr345", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "345"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "650"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"go345", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "345"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "615"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gy345", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "345"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "590"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gg345", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "345"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "510"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gb345", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "345"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "470"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gp345", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "345"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "410"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gr330", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "330"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "650"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"go330", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "330"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "615"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gy330", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "330"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "590"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gg330", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "330"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "510"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gb330", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "330"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "470"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gp330", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "330"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "410"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gr315", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "315"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "650"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"go315", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "315"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "615"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gy315", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "315"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "590"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gg315", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "315"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "510"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gb315", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "315"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "470"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gp315", "=", 
+   RowBox[{"makeGraph", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "3"}], ",", "0.01", ",", 
+       RowBox[{
+        FractionBox["\[Pi]", "180"], "315"}], ",", "0"}], "}"}], ",", "0.35", 
+     ",", "410"}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.8821575542996798`*^9, 3.882157612388167*^9}, {
+   3.882157652258562*^9, 3.882157657396987*^9}, {3.8821578306372423`*^9, 
+   3.882157836205852*^9}, {3.8821578996148357`*^9, 3.882157915888407*^9}, {
+   3.8821649033520355`*^9, 3.882164942357147*^9}, {3.882164979987176*^9, 
+   3.8821650057779245`*^9}, {3.8821650605345078`*^9, 3.882165098852248*^9}, {
+   3.8821651424407125`*^9, 3.8821652402107544`*^9}, {3.882262764244194*^9, 
+   3.882262772901419*^9}, {3.882262833485712*^9, 3.882262878025553*^9}, 
+   3.8823800955967655`*^9, {3.8823801413746843`*^9, 3.88238036873598*^9}, {
+   3.882380422193451*^9, 3.8823805089253407`*^9}, {3.882980863753995*^9, 
+   3.8829809551598625`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Show", "[", 
+  RowBox[{"{", 
+   RowBox[{
+   "tlo", ",", "gr0", ",", "go0", ",", "gy0", ",", "gg0", ",", "gb0", ",", 
+    "gp0", ",", "gr15", ",", "go15", ",", "gy15", ",", "gg15", ",", "gb15", 
+    ",", "gp15", ",", "gr30", ",", "go30", ",", "gy30", ",", "gg30", ",", 
+    "gb30", ",", "gp30", ",", "gr45", ",", "go45", ",", "gy45", ",", "gg45", 
+    ",", "gb45", ",", "gp45", ",", "gr345", ",", "go345", ",", "gy345", ",", 
+    "gg345", ",", "gb345", ",", "gp345", ",", "gr330", ",", "go330", ",", 
+    "gy330", ",", "gg330", ",", "gb330", ",", "gp330", ",", "gr315", ",", 
+    "go315", ",", "gy315", ",", "gg315", ",", "gb315", ",", "gp315"}], "}"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.882157983833315*^9, 3.8821580031859407`*^9}, 
+   3.882380599272643*^9, {3.882980962125325*^9, 3.8829810462664604`*^9}}]
+},
+WindowSize->{979, 988},
+WindowMargins->{{-7, Automatic}, {Automatic, 0}},
+Magnification->1.25,
+FrontEndVersion->"10.1 for Microsoft Windows (64-bit) (March 23, 2015)",
+StyleDefinitions->FrontEnd`FileName[{"Report"}, "StandardReport.nb", 
+  CharacterEncoding -> "WindowsEastEurope"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 219, 4, 38, "Text"],
+Cell[780, 26, 118, 2, 48, "Input"],
+Cell[901, 30, 3811, 109, 551, "Input"],
+Cell[4715, 141, 14877, 365, 1197, "Input"],
+Cell[19595, 508, 93, 1, 38, "Text"],
+Cell[19691, 511, 2116, 68, 305, "Input"],
+Cell[21810, 581, 253, 6, 48, "Input"],
+Cell[22066, 589, 97, 1, 38, "Text"],
+Cell[22166, 592, 2085, 67, 305, "Input"],
+Cell[24254, 661, 257, 6, 48, "Input"],
+Cell[24514, 669, 97, 1, 38, "Text"],
+Cell[24614, 672, 2326, 67, 305, "Input"],
+Cell[26943, 741, 361, 8, 48, "Input"],
+Cell[27307, 751, 97, 1, 38, "Text"],
+Cell[27407, 754, 2225, 70, 305, "Input"],
+Cell[29635, 826, 304, 7, 48, "Input"],
+Cell[29942, 835, 96, 1, 38, "Text"],
+Cell[30041, 838, 12608, 387, 1997, "Input"],
+Cell[42652, 1227, 1021, 16, 118, "Input"],
+Cell[43676, 1245, 98, 1, 38, "Text"],
+Cell[43777, 1248, 13756, 430, 1997, "Input"],
+Cell[57536, 1680, 838, 14, 118, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

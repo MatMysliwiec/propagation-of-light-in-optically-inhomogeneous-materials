@@ -1,0 +1,28 @@
+
+
+%\cmmt{zmieniono odnośnik do rysunku, proszę zobaczyć w tym tex jak budować odnośnik do rysunku w komendzie figure, zrobic wszedzie analogicznie}
+
+\indent Korzystając z zasady Fermata można wyznaczyć załamanie światła na granicy ośrodków. Rysunek \figref{fig:PrawoSneliusa} przedstawia przechodzenie promienia z punktu A znajdującego się w ośrodku $n_1$, który pada w punkcie P na płaską powierzchnię styku dwóch ośrodków o współczynnikach załamania $n_1$ i $n_2$. Promień padający generuje jeden promień odbity i promień załamany. W naszym przykładzie zajmujemy się promieniem załamanym, który przechodzi przez ośrodek $n_2$ do punktu B. Przedstawiamy jedno z dwóch realnych przypadków załamania promienia, jeśli warunki byłyby odwrotne, to znaczy promień przechodziłby z ośrodka o większym współczynniku załamania światła do ośrodka o mniejszym współczynniku, to kąta załamania $\beta$ byłby większy od kąta padania $\alpha$. Zasada najmniejszego czasu Fermata jest bezpośrednim problemem minimalizacji -- znajdujemy najkrótszy możliwy czas potrzebny na rozchodzenie się światła z jednego punktu do drugiego. Odległości od A do x oraz od x do B wynoszą odpowiednio \cite{gregschool}:
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.75\textwidth]{grafika/Rys3.jpg}
+    \caption{\label{fig:PrawoSneliusa} Prawo Snelliusa. Geometria dla załamania promienia na granicy ośrodków. Promień świetlny oznaczony żółtą strzałką pada w punkcie P na płaszczyznę styku dwóch ośrodków, generują promień odbicia (czerwona strzałka) oraz promień załamania (zielona strzałka). Pokazany na przykładzie ośrodków powierzchnia-woda, pierwszy ośrodek ma mniejszy współczynnik załamania niż drugi ośrodek.}
+\end{figure}
+%
+$$L_{1}=\sqrt{h^{2}+x^{2}},\qquad L_{2}=\sqrt{b^{2}+\br{a-x}^{2}}.$$
+%
+Całkowity czas wynosi:
+%
+$$t=\frac{L_1}{V_1}+\frac{L_2}{V_2}=\frac{\sqrt{h^{2}+x^{2}}}{c}+\frac{\sqrt{b^{2}+\br{a-x}^{2}}}{c}=n_{1}\sqrt{h^{2}+x^{2}}+n_{2}\sqrt{b^{2}+\br{a-x}^{2}}.$$
+%
+Zminimalizujemy to wyrażenie, biorąc pochodną czasu względem położenia x i ustawiając wynik na zero:
+%
+$$\frac{dt}{dx}=\frac{1}{2}n_{1}\frac{2x}{\sqrt{h^{2}+x^{2}}}-\frac{1}{2}n_{2}\frac{2\br{a-x}^{2}}{\sqrt{b^{2}+\br{a-x}^{2}}}=0,$$
+%
+$$\Rightarrow n_{1}\frac{x}{\sqrt{h^{2}+x^{2}}}-n_{2}\frac{\br{a-x}}{\sqrt{b^{2}+\br{a-x}^{2}}}=0,$$
+%
+$$\Rightarrow n_{1}\cos\br{\pi /2-\alpha}-n_{2}\cos\br{\pi /2-\beta}.$$
+Przekształcenie cosinusów daje prawo Sneliusa:
+%
+$$n_{1}\sin\alpha=n_{2}\sin\beta.$$

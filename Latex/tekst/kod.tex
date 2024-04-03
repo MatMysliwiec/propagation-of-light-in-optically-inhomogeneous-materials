@@ -1,0 +1,54 @@
+\indent W rozdziale zostanie opisany kod integratora z zastosowaniem procedury RK3(2), wytłumaczonej powyżej, z adaptowanym krokiem metodą RK2. Zostanie później wykorzystany do całkowania toru ruchu promienia świetlnego, w  zobrazowaniu propagacji światła w wytworzonych układach optycznych.
+\begin{lstlisting}
+    KadaptRK3BS[XY_]:= Module[{k1, k2, k3, k4, x=First@XY, 
+    Y = Drop[XY,1], $\Delta$Y23, $\Delta$k, hstare},
+\end{lstlisting}
+Zapamiętanie na początku parametru kryterium skalowania kroku h, do dalszej modyfikacji w~następnych krokach
+\begin{lstlisting}
+    hstare = h;
+\end{lstlisting}
+Używamy metody RK3 Ralston'a, $FIO$ to ewaluacja $F$ ze skrajne prawego brzegu poprzedniego kroku
+\begin{lstlisting}
+    k1 = h FIO;
+    k2 = h F[x + $\frac{1}{2}$h, ##] & @@ (Y + $\frac{1}{2}$k1);
+    k3 = h F[x + $\frac{3}{4}$h, ##] & @@ (Y + $\frac{3}{4}$k2);
+    Y3 = Y + ($\frac{2}{9}$k1 +$\frac{1}{3}$k2 + $\frac{4}{9}$k3);
+\end{lstlisting}
+Tu następuje przejście do kolejnego kroku, FIO przechodzi do skrajnie prawego brzegu następnego kroku i całkujemy używając teraz metody RK drugiego rzędu
+\begin{lstlisting}
+    FIO = F[x+h, ##]& @@ Y3;
+    k4 = h FIO;
+\end{lstlisting}
+Oszacowanie błędu metody jako wartość bezwzględna różnicy Y dla metod RK3 i RK2: $\Delta Y23 = Abs\sq{Y3-Y2}$, $Y2=Y+\frac{7}{24}k1+\frac{1}{4}k2+\frac{1}{3}k3+\frac{1}{8}k4$
+\begin{lstlisting}
+    $\Delta$Y23 = Abs[$\frac{1}{72}$(5k1 - 6k2 - 8k3 + 9k4)];
+\end{lstlisting}
+Skalar oceny błędu względnego, jako że mamy do czynienia z wektorem sześciowymiarowym bierzemy maksymalną wartość różnicy względnej, poprawka do błędu względnego przyrostu $Y3-Y$, w slotach gdzie $Y3$ się zeruje
+\begin{lstlisting}
+    $\Delta$k = Max@$\frac{\Delta Y23}{Abs[Y3] + Abs[Y3 - Y]}$;
+\end{lstlisting}
+Ograniczenie czynnika wzrostu, aby ustrzec się nadmiernie dużego kroku. Porównujemy zdefiniowaną przez nas stałą $\delta$ do obliczonego względnego błędu metody. Jeśli błąd jest większy od $\delta$ to znaczy, że krok jest za duży, dlatego odpowiednio go zmniejszamy. W tym przykładzie zostało wprowadzone ograniczenie czynnika wzrostu do 5
+\begin{lstlisting}
+    h = hstare If[$\delta$ > $\Delta$k, Min[ $\frac{\delta}{\Delta k}^{1/3}$, 5], Max[ $\frac{\delta}{\Delta k}^{1/3}$, 1/5]];
+    ndone++;
+    Flatten@ {x + hstare, Y3}]
+\end{lstlisting}
+Dodatkowym elementem integratora jest procedura znalezienia najlepszej wartości $\delta$, aby nie definiować ręcznie tego parametru jak było na przykładzie oscylatora harmonicznego przedstawiony w rozdziale \ref{s:AA}. Krok początkowy wyrażamy wzorem 
+$$Y'[0+h] = Y^i[0] +h F^i[0,Y[0]]+\frac{1}{2}(F^a \partial_a F^i) [0,Y[0]] h^2,$$
+skrótowo $Y^i[h]\approx Y0^i + hF^i +\frac{1}{2} F.dF^i h^2$. Cały proces polega na dwóch warunkach: odstępstwo mierzone przez człon kwadratowy $dF^i$ powinno być małe w~względem średniej $Y0^i + \frac{1}{2}hF^i$ w~przybliżeniu liniowym $F$, tzn. znajdując takie $\delta$,~że $\delta(Abs[Y0^i]+\frac{1}{2}h Abs[F^i] = \frac{1}{2} Abs[F.dF^i] h^2$,~a~ponieważ patrzymy na małe wartości względem $Y0$,~to 
+$$\delta(Abs[Y0^i]\approx \frac{1}{2} Abs[F.dF] h^2 \Rightarrow h = \delta \sqrt{\frac{2 Abs[Y0^i]}{Abs[F.dF]}}.$$
+Zakładamy,~że $\delta=10^{-8} \rightarrow \sqrt{\delta}=\epsilon=10^{-4}$,~w programach będziemy używali $\epsilon$. Następnie,~biorąc pod uwagę wcześniejsze założenia wyprowadzamy drugi warunek: 
+$$\frac{1}{2}h Abs[F^i] >> \frac{1}{2} Abs[(F.dF)^i] h^2 \leftrightarrow h\epsilon Abs[F^i] == Abs [(F.dF)^i] h^2 \leftrightarrow \epsilon \frac{Abs[F^i]}{Abs[(F.dF)^i]}=h.$$ 
+Końcowo wybieramy najmniejszą wartość $\sqrt{\delta}$ ze zbiorów wszystkich indeksów $i$.
+\begin{lstlisting}
+    hstart[] := Module[{f, df, fdf, Y0, x, y, $\phi$, t, s, tmp},
+        Y0 = Abs[{x0, y0, $\phi$0}];
+        f = Take[F[s0, x0, y0, $\phi$0, t0], 3];
+        df = Transpose[(D[Take[F[s, x, y, $\phi$, t], 3], #] 
+            &/@ {x, y, $\phi$}) /. s$\rightarrow$s0 /. x$\rightarrow$x0 /. y$\rightarrow$y0 /. $\phi$$\rightarrow$$\phi$0];
+        fdf = Abs[f.df];
+        tmp = Flatten@Table[If[fdf[[i]] > 0, 
+            Min[ $\sqrt{\frac{2 Y0[[i]]}{fdf[[i]]}}$,$\frac{Abs[f[[i]]]}{fdf[[i]]}$],$\infty$], {i, 1, 3}];
+        $\sqrt{\delta}$ Min@tmp];
+\end{lstlisting}
+Moduł sprawdza rozbieżności trajektorii przy takich samych warunkach początkowych, ale przy innych parametrach $\delta$, regulując przy tym precyzję integratora poprzez wybranie optymalnej wartości $\delta$ na podstawie obserwacji położenia punktu końcowego trajektorii w funkcji logarytmu liczby kroków. Później następuje procedura całkowania, czyli szukania rozwiązań do otrzymania toru przebiegu promienia świetlnego.
