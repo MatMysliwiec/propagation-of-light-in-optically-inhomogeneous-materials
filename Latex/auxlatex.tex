@@ -1,0 +1,40 @@
+\usepackage{subfigure}
+
+\usepackage{amsmath}
+\usepackage[normalem]{ulem} % strikeout itp
+\usepackage[small]{caption} % konwencje: podpisy rysunków itp
+\usepackage{color}
+\addtolength{\hoffset}{-1.25cm} \addtolength{\textwidth}{2.5cm}
+\addtolength{\voffset}{-1.0cm} \addtolength{\textheight}{2.0cm}
+
+\setlength{\captionmargin}{0.1\textwidth}
+
+%\bibliographystyle{abbrvnat}%{rusnat}%{ksfh_nat}
+
+\definecolor{myred}{rgb}{0.8,0,0}
+\newcounter{cmmtcount}
+\newcommand{\cmmt}[1]{
+    \stepcounter{cmmtcount}
+    {\bf \color{red}{cmmt\arabic{cmmtcount}}}
+    {\color{myred}{\sl #1}}} % komentarze/uwagi
+\renewcommand{\cmmt}[1]{}  % włączyc by nie było komentarzy
+\newcommand{\br}[1]{\left({#1}\right)}
+\newcommand{\sq}[1]{\left[{#1}\right]}
+\renewcommand{\vec}[1]{{\bf #1}}
+\newcommand{\sprod}[2]{\vec{#1}{\circ}\vec{#2}} %iloczyn skalarny
+\newcommand{\vprod}[2]{\vec{#1}{\times}\vec{#2}} %iloczyn wektorowy
+\renewcommand{\div}[1]{\sprod{\nabla}{\vec{#1}}}
+\newcommand{\rot}[1]{\vprod{\nabla}{#1}}
+\newcommand{\grad}[1]{\vec{\nabla}{#1}}
+\renewcommand{\tg}[1]{{\rm tg}{#1}}
+\newcommand{\ud}[1]{{\rm d}{#1}}
+\newcommand{\figref}[1]{\ref{#1}} % odnosnik do rysunkow /do modyfikacji później/
+
+\usepackage[normalem]{ulem}
+\usepackage{color} 
+\usepackage{xspace} 
+\definecolor{mygreen}{RGB}{30,150,30} 
+\definecolor{mygrey}{RGB}{125,125,125} 
+\newcommand{\repl}[2]{{\color{mygrey}{\sout{#1}}}{\color{red}{#2}}}
+\newcommand{\add}[1]{{\color{mygreen}{#1}}\xspace}
+\newcommand{\rem}[1]{{\color{mygrey}{\sout{#1}}}} 

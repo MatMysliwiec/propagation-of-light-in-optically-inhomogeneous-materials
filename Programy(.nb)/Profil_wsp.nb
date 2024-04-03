@@ -1,0 +1,1036 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     31773,       1027]
+NotebookOptionsPosition[     30758,        995]
+NotebookOutlinePosition[     31215,       1012]
+CellTagsIndexPosition[     31172,       1009]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+Wydruk programu ,,Profil_wsp\[CloseCurlyDoubleQuote] do wytworzenia rysunk\
+\[OAcute]w profili wsp\[OAcute]\[LSlash]czynnika za\[LSlash]amania \
+prezentowanych uk\[LSlash]ad\[OAcute]w\
+\>", "Text",
+ CellChangeTimes->{{3.8832223017303357`*^9, 3.8832223046579885`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Exit", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.880953738745685*^9, 3.880953740955885*^9}}],
+
+Cell["Rysunek 7.3", "Text",
+ CellChangeTimes->{{3.883216957192792*^9, 3.883216960324996*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"w", "=", "6"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"An", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Xi]", "=", 
+   RowBox[{"8", "/", "10"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Ay", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Ax", "=", 
+   RowBox[{"Ay", 
+    SqrtBox[
+     RowBox[{"1", "-", 
+      SuperscriptBox["\[Xi]", "2"]}]]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"P", "=", "0.5"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Tau]", "=", "0.2"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Lambda]", "=", "400"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Lambda]1", "=", "400"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Lambda]2", "=", "720"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"n1", "=", 
+   RowBox[{"1", "+", 
+    RowBox[{"P", 
+     RowBox[{"(", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"2", "An"}], 
+        RowBox[{"2", "+", 
+         FractionBox[
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{"Ay", "+", "x"}], ")"}], "2"], 
+          SuperscriptBox["Ax", "2"]], "+", 
+         FractionBox[
+          SuperscriptBox["y", "2"], 
+          SuperscriptBox["Ay", "2"]]}]], "+", 
+       FractionBox[
+        RowBox[{"2", "An"}], 
+        RowBox[{"2", "+", 
+         FractionBox[
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{"x", "-", "Ay"}], ")"}], "2"], 
+          SuperscriptBox["Ax", "2"]], "+", 
+         FractionBox[
+          SuperscriptBox["y", "2"], 
+          SuperscriptBox["Ay", "2"]]}]], "+", 
+       RowBox[{"4", 
+        SuperscriptBox[
+         RowBox[{"Sin", "[", "y", "]"}], "12"]}]}], ")"}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"nn", "[", 
+    RowBox[{"x_", ",", "y_"}], "]"}], "=", 
+   RowBox[{"n1", "+", 
+    FractionBox[
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "n1"}], ")"}], "\[Tau]", 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["\[Lambda]", "2"], "-", 
+        SuperscriptBox["\[Lambda]1", "2"]}], ")"}], 
+      SuperscriptBox["\[Lambda]2", "2"]}], 
+     RowBox[{
+      SuperscriptBox["\[Lambda]", "2"], 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["\[Lambda]1", "2"], "-", 
+        SuperscriptBox["\[Lambda]2", "2"]}], ")"}]}]]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tlo", "=", 
+   RowBox[{"ContourPlot", "[", 
+    RowBox[{
+     RowBox[{"nn", "[", 
+      RowBox[{"x", ",", "y"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"-", "w"}], ",", "w"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", 
+       RowBox[{"-", "w"}], ",", "w"}], "}"}], ",", 
+     RowBox[{"Contours", "\[Rule]", "29"}], ",", 
+     RowBox[{"PlotPoints", "\[Rule]", "39"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"gWsp", "=", 
+  RowBox[{"Plot", "[", 
+   RowBox[{
+    RowBox[{"nn", "[", 
+     RowBox[{"x", ",", "0"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", 
+      RowBox[{"-", "w"}], ",", "w"}], "}"}], ",", 
+    RowBox[{"PlotRange", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"All", ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "3"}], "}"}]}], "}"}]}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.883216996469008*^9, 3.8832170790964937`*^9}, {
+  3.883217113261479*^9, 3.8832171134175005`*^9}}],
+
+Cell["Rysunek 7.4", "Text",
+ CellChangeTimes->{{3.883216946837663*^9, 3.883216950876192*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"w", "=", "6"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"An", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Xi]", "=", 
+   RowBox[{"8", "/", "10"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Ay", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Ax", "=", 
+   RowBox[{"Ay", 
+    SqrtBox[
+     RowBox[{"1", "-", 
+      SuperscriptBox["\[Xi]", "2"]}]]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"P", "=", "0.9"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Tau]", "=", "0.2"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Lambda]", "=", "400"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Lambda]1", "=", "400"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Lambda]2", "=", "720"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"n1", "=", 
+   RowBox[{"1", "+", 
+    RowBox[{"P", 
+     RowBox[{"(", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"2", "An"}], 
+        RowBox[{"2", "+", 
+         FractionBox[
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{"Ay", "+", "x"}], ")"}], "2"], 
+          SuperscriptBox["Ax", "2"]], "+", 
+         FractionBox[
+          SuperscriptBox["y", "2"], 
+          SuperscriptBox["Ay", "2"]]}]], "+", 
+       FractionBox[
+        RowBox[{"2", "An"}], 
+        RowBox[{"2", "+", 
+         FractionBox[
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{"x", "-", "Ay"}], ")"}], "2"], 
+          SuperscriptBox["Ax", "2"]], "+", 
+         FractionBox[
+          SuperscriptBox["y", "2"], 
+          SuperscriptBox["Ay", "2"]]}]], "+", 
+       RowBox[{"4", 
+        SuperscriptBox[
+         RowBox[{"Sin", "[", "y", "]"}], "12"]}]}], ")"}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"nn", "[", 
+    RowBox[{"x_", ",", "y_"}], "]"}], "=", 
+   RowBox[{"n1", "+", 
+    FractionBox[
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "n1"}], ")"}], "\[Tau]", 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["\[Lambda]", "2"], "-", 
+        SuperscriptBox["\[Lambda]1", "2"]}], ")"}], 
+      SuperscriptBox["\[Lambda]2", "2"]}], 
+     RowBox[{
+      SuperscriptBox["\[Lambda]", "2"], 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["\[Lambda]1", "2"], "-", 
+        SuperscriptBox["\[Lambda]2", "2"]}], ")"}]}]]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tlo", "=", 
+   RowBox[{"ContourPlot", "[", 
+    RowBox[{
+     RowBox[{"nn", "[", 
+      RowBox[{"x", ",", "y"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"-", "w"}], ",", "w"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", 
+       RowBox[{"-", "w"}], ",", "w"}], "}"}], ",", 
+     RowBox[{"Contours", "\[Rule]", "29"}], ",", 
+     RowBox[{"PlotPoints", "\[Rule]", "39"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"gWsp1", "=", 
+  RowBox[{"Plot", "[", 
+   RowBox[{
+    RowBox[{"nn", "[", 
+     RowBox[{"x", ",", "0"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", 
+      RowBox[{"-", "w"}], ",", "w"}], "}"}], ",", 
+    RowBox[{"PlotStyle", "\[Rule]", "Red"}], ",", 
+    RowBox[{"PlotRange", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"All", ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "3"}], "}"}]}], "}"}]}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Tau]", "=", "0.5"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"n1", "=", 
+   RowBox[{"1", "+", 
+    RowBox[{"P", 
+     RowBox[{"(", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"2", "An"}], 
+        RowBox[{"2", "+", 
+         FractionBox[
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{"Ay", "+", "x"}], ")"}], "2"], 
+          SuperscriptBox["Ax", "2"]], "+", 
+         FractionBox[
+          SuperscriptBox["y", "2"], 
+          SuperscriptBox["Ay", "2"]]}]], "+", 
+       FractionBox[
+        RowBox[{"2", "An"}], 
+        RowBox[{"2", "+", 
+         FractionBox[
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{"x", "-", "Ay"}], ")"}], "2"], 
+          SuperscriptBox["Ax", "2"]], "+", 
+         FractionBox[
+          SuperscriptBox["y", "2"], 
+          SuperscriptBox["Ay", "2"]]}]], "+", 
+       RowBox[{"4", 
+        SuperscriptBox[
+         RowBox[{"Sin", "[", "y", "]"}], "12"]}]}], ")"}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"nn", "[", 
+    RowBox[{"x_", ",", "y_"}], "]"}], "=", 
+   RowBox[{"n1", "+", 
+    FractionBox[
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "n1"}], ")"}], "\[Tau]", 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["\[Lambda]", "2"], "-", 
+        SuperscriptBox["\[Lambda]1", "2"]}], ")"}], 
+      SuperscriptBox["\[Lambda]2", "2"]}], 
+     RowBox[{
+      SuperscriptBox["\[Lambda]", "2"], 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["\[Lambda]1", "2"], "-", 
+        SuperscriptBox["\[Lambda]2", "2"]}], ")"}]}]]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"gWsp2", "=", " ", 
+  RowBox[{"Plot", "[", 
+   RowBox[{
+    RowBox[{"nn", "[", 
+     RowBox[{"x", ",", "0"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", 
+      RowBox[{"-", "w"}], ",", "w"}], "}"}], ",", 
+    RowBox[{"PlotStyle", "\[Rule]", "Green"}], ",", 
+    RowBox[{"PlotRange", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"All", ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "3"}], "}"}]}], "}"}]}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Tau]", "=", "0.8"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"n1", "=", 
+   RowBox[{"1", "+", 
+    RowBox[{"P", 
+     RowBox[{"(", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"2", "An"}], 
+        RowBox[{"2", "+", 
+         FractionBox[
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{"Ay", "+", "x"}], ")"}], "2"], 
+          SuperscriptBox["Ax", "2"]], "+", 
+         FractionBox[
+          SuperscriptBox["y", "2"], 
+          SuperscriptBox["Ay", "2"]]}]], "+", 
+       FractionBox[
+        RowBox[{"2", "An"}], 
+        RowBox[{"2", "+", 
+         FractionBox[
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{"x", "-", "Ay"}], ")"}], "2"], 
+          SuperscriptBox["Ax", "2"]], "+", 
+         FractionBox[
+          SuperscriptBox["y", "2"], 
+          SuperscriptBox["Ay", "2"]]}]], "+", 
+       RowBox[{"4", 
+        SuperscriptBox[
+         RowBox[{"Sin", "[", "y", "]"}], "12"]}]}], ")"}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"nn", "[", 
+    RowBox[{"x_", ",", "y_"}], "]"}], "=", 
+   RowBox[{"n1", "+", 
+    FractionBox[
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "n1"}], ")"}], "\[Tau]", 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["\[Lambda]", "2"], "-", 
+        SuperscriptBox["\[Lambda]1", "2"]}], ")"}], 
+      SuperscriptBox["\[Lambda]2", "2"]}], 
+     RowBox[{
+      SuperscriptBox["\[Lambda]", "2"], 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["\[Lambda]1", "2"], "-", 
+        SuperscriptBox["\[Lambda]2", "2"]}], ")"}]}]]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"gWsp3", "=", " ", 
+  RowBox[{"Plot", "[", 
+   RowBox[{
+    RowBox[{"nn", "[", 
+     RowBox[{"x", ",", "0"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", 
+      RowBox[{"-", "w"}], ",", "w"}], "}"}], ",", 
+    RowBox[{"PlotStyle", "\[Rule]", "Blue"}], ",", 
+    RowBox[{"PlotRange", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"All", ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "3"}], "}"}]}], "}"}]}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Show", "[", 
+  RowBox[{"{", 
+   RowBox[{"gWsp1", ",", "gWsp2", ",", "gWsp3"}], "}"}], "]"}]}], "Input",
+ CellChangeTimes->{
+  3.882518151368243*^9, {3.8825181915623426`*^9, 3.88251828360564*^9}, {
+   3.8825183227228546`*^9, 3.8825183627969265`*^9}, {3.882518394462191*^9, 
+   3.8825184062620535`*^9}, {3.8825184466933646`*^9, 3.882518622723076*^9}, {
+   3.8832169787950144`*^9, 3.8832169873061914`*^9}, {3.883218351846454*^9, 
+   3.883218351952635*^9}}],
+
+Cell["Rysunek 7.9", "Text",
+ CellChangeTimes->{{3.883217710744362*^9, 3.883217715389372*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"w", "=", "6"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"v", "=", "0.5"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"a", "=", "1"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"b", "=", "0.9"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ro", "=", "1"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"P", "=", "0.9"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"u", "=", 
+   SqrtBox[
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"(", 
+       FractionBox["x", "a"], ")"}], "2"], "+", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       FractionBox["y", "b"], ")"}], "2"]}]]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Tau]", "=", "0.2"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Lambda]", "=", "400"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Lambda]1", "=", "400"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Lambda]2", "=", "720"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"n1", "=", 
+   RowBox[{"1", "+", 
+    RowBox[{"P", 
+     RowBox[{"(", 
+      FractionBox[
+       RowBox[{"1", "+", 
+        RowBox[{"Exp", "[", 
+         RowBox[{
+          RowBox[{"-", "ro"}], "/", "v"}], "]"}]}], 
+       RowBox[{"1", "+", 
+        RowBox[{"Exp", "[", 
+         RowBox[{"u", "-", 
+          RowBox[{"ro", "/", "v"}]}], "]"}]}]], ")"}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"nn", "[", 
+    RowBox[{"x_", ",", "y_"}], "]"}], "=", 
+   RowBox[{"n1", "+", 
+    FractionBox[
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "n1"}], ")"}], "\[Tau]", 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["\[Lambda]", "2"], "-", 
+        SuperscriptBox["\[Lambda]1", "2"]}], ")"}], 
+      SuperscriptBox["\[Lambda]2", "2"]}], 
+     RowBox[{
+      SuperscriptBox["\[Lambda]", "2"], 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["\[Lambda]1", "2"], "-", 
+        SuperscriptBox["\[Lambda]2", "2"]}], ")"}]}]]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tlo", "=", 
+   RowBox[{"ContourPlot", "[", 
+    RowBox[{
+     RowBox[{"nn", "[", 
+      RowBox[{"x", ",", "y"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"-", "w"}], ",", "w"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", 
+       RowBox[{"-", "w"}], ",", "w"}], "}"}], ",", 
+     RowBox[{"Contours", "\[Rule]", "29"}], ",", 
+     RowBox[{"PlotPoints", "\[Rule]", "39"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"gWsp", "=", 
+  RowBox[{"Plot", "[", 
+   RowBox[{
+    RowBox[{"nn", "[", 
+     RowBox[{"x", ",", "0"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", 
+      RowBox[{"-", "w"}], ",", "w"}], "}"}], ",", 
+    RowBox[{"PlotRange", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"All", ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "3"}], "}"}]}], "}"}]}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.883217734005365*^9, 3.88321778258914*^9}, {
+  3.88321781979657*^9, 3.88321782548287*^9}, {3.8832180438491445`*^9, 
+  3.883218052719874*^9}, {3.8832183484927115`*^9, 3.883218348596154*^9}}],
+
+Cell["Rysunek 7.12", "Text",
+ CellChangeTimes->{{3.883218083881996*^9, 3.883218088395467*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"w", "=", "6"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"v", "=", "0.2"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"a", "=", "1"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"b", "=", "0.9"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ro", "=", "0.9"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"P", "=", "0.35"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"u", "=", 
+   SqrtBox[
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"(", 
+       FractionBox["x", "a"], ")"}], "2"], "+", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       FractionBox["y", "b"], ")"}], "2"]}]]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Tau]", "=", "0.2"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Lambda]", "=", "400"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Lambda]1", "=", "400"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Lambda]2", "=", "720"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"n1", "=", 
+   RowBox[{"1", "+", 
+    RowBox[{"P", 
+     RowBox[{"(", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"1", "+", 
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"-", "ro"}], "/", "v"}], "]"}]}], 
+        RowBox[{"1", "+", 
+         RowBox[{"Exp", "[", 
+          RowBox[{"u", "-", 
+           RowBox[{"ro", "/", "v"}]}], "]"}]}]], "+", 
+       FractionBox[
+        RowBox[{"(", 
+         RowBox[{"x", "-", "1"}], ")"}], 
+        RowBox[{"1", "+", 
+         RowBox[{"Exp", "[", 
+          RowBox[{"u", "-", 
+           RowBox[{"ro", "/", "v"}]}], "]"}]}]]}], ")"}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"nn", "[", 
+    RowBox[{"x_", ",", "y_"}], "]"}], "=", 
+   RowBox[{"n1", "+", 
+    FractionBox[
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "n1"}], ")"}], "\[Tau]", 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["\[Lambda]", "2"], "-", 
+        SuperscriptBox["\[Lambda]1", "2"]}], ")"}], 
+      SuperscriptBox["\[Lambda]2", "2"]}], 
+     RowBox[{
+      SuperscriptBox["\[Lambda]", "2"], 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["\[Lambda]1", "2"], "-", 
+        SuperscriptBox["\[Lambda]2", "2"]}], ")"}]}]]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tlo", "=", 
+   RowBox[{"ContourPlot", "[", 
+    RowBox[{
+     RowBox[{"nn", "[", 
+      RowBox[{"x", ",", "y"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"-", "w"}], ",", "w"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", 
+       RowBox[{"-", "w"}], ",", "w"}], "}"}], ",", 
+     RowBox[{"Contours", "\[Rule]", "29"}], ",", 
+     RowBox[{"PlotPoints", "\[Rule]", "39"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"gWsp", "=", 
+  RowBox[{"Plot", "[", 
+   RowBox[{
+    RowBox[{"nn", "[", 
+     RowBox[{"x", ",", "0"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", 
+      RowBox[{"-", "w"}], ",", "w"}], "}"}], ",", 
+    RowBox[{"PlotRange", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"All", ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "3"}], "}"}]}], "}"}]}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.8832181776066275`*^9, 3.8832182047415733`*^9}, {
+  3.8832183455438867`*^9, 3.8832183460716867`*^9}}],
+
+Cell["Rysunek 7.17", "Text",
+ CellChangeTimes->{{3.8832182487667303`*^9, 3.8832182575894775`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"w", "=", "8"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"v", "=", "0.5"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"a", "=", "1"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"b", "=", "3"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ro", "=", "1"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"P", "=", "0.9"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"u", "=", 
+   SqrtBox[
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"(", 
+       FractionBox[
+        RowBox[{"x", "-", "y"}], "a"], ")"}], "2"], "+", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       FractionBox[
+        RowBox[{"x", "+", "y"}], "b"], ")"}], "2"]}]]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Tau]", "=", "0.2"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Lambda]", "=", "400"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Lambda]1", "=", "400"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Lambda]2", "=", "720"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"n1", "=", 
+   RowBox[{"1", "+", 
+    RowBox[{"P", 
+     RowBox[{"(", 
+      FractionBox[
+       RowBox[{"1", "+", 
+        RowBox[{"Exp", "[", 
+         RowBox[{
+          RowBox[{"-", "ro"}], "/", "v"}], "]"}]}], 
+       RowBox[{"1", "+", 
+        RowBox[{"Exp", "[", 
+         RowBox[{"u", "-", 
+          RowBox[{"ro", "/", "v"}]}], "]"}]}]], ")"}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"nn", "[", 
+    RowBox[{"x_", ",", "y_"}], "]"}], "=", 
+   RowBox[{"n1", "+", 
+    FractionBox[
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "n1"}], ")"}], "\[Tau]", 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["\[Lambda]", "2"], "-", 
+        SuperscriptBox["\[Lambda]1", "2"]}], ")"}], 
+      SuperscriptBox["\[Lambda]2", "2"]}], 
+     RowBox[{
+      SuperscriptBox["\[Lambda]", "2"], 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["\[Lambda]1", "2"], "-", 
+        SuperscriptBox["\[Lambda]2", "2"]}], ")"}]}]]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tlo", "=", 
+   RowBox[{"ContourPlot", "[", 
+    RowBox[{
+     RowBox[{"nn", "[", 
+      RowBox[{"x", ",", "y"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"-", "w"}], ",", "w"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", 
+       RowBox[{"-", "w"}], ",", "w"}], "}"}], ",", 
+     RowBox[{"Contours", "\[Rule]", "29"}], ",", 
+     RowBox[{"PlotPoints", "\[Rule]", "39"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"gWsp", "=", 
+  RowBox[{"Plot", "[", 
+   RowBox[{
+    RowBox[{"nn", "[", 
+     RowBox[{"x", ",", "0"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", 
+      RowBox[{"-", "w"}], ",", "w"}], "}"}], ",", 
+    RowBox[{"PlotRange", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"All", ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "3"}], "}"}]}], "}"}]}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.8832182837824955`*^9, 3.8832183434378333`*^9}}],
+
+Cell["Rysunek 7.19", "Text",
+ CellChangeTimes->{{3.8832184080831833`*^9, 3.883218417035589*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"w", "=", "6"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"k", "=", "3"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ro", "=", "2"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"aa", "=", 
+   RowBox[{"ro", "/", "3"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"P", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "f", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"f", "[", "x_", "]"}], "=", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "1"}], "<", "x", "<", "1"}], ",", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"1", "-", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          SuperscriptBox["x", "2"], ")"}], "k"]}], ")"}], 
+      RowBox[{"2", "k"}]], ",", "0"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Tau]", "=", "0.2"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Lambda]", "=", "400"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Lambda]1", "=", "400"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Lambda]2", "=", "720"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"n1", "=", 
+   RowBox[{"1", "+", 
+    RowBox[{"P", " ", 
+     RowBox[{"f", "[", 
+      FractionBox[
+       RowBox[{
+        SqrtBox[
+         RowBox[{
+          SuperscriptBox["x", "2"], "+", 
+          SuperscriptBox["y", "2"]}]], "-", "ro"}], "aa"], "]"}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"nn", "[", 
+    RowBox[{"x_", ",", "y_"}], "]"}], "=", 
+   RowBox[{"n1", "+", 
+    FractionBox[
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "n1"}], ")"}], "\[Epsilon]", 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["\[Lambda]", "2"], "-", 
+        SuperscriptBox["\[Lambda]1", "2"]}], ")"}], 
+      SuperscriptBox["\[Lambda]2", "2"]}], 
+     RowBox[{
+      SuperscriptBox["\[Lambda]", "2"], 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["\[Lambda]1", "2"], "-", 
+        SuperscriptBox["\[Lambda]2", "2"]}], ")"}]}]]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"gWsp", "=", 
+  RowBox[{"Plot", "[", 
+   RowBox[{
+    RowBox[{"nn", "[", 
+     RowBox[{"x", ",", "0"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", 
+      RowBox[{"-", "w"}], ",", "w"}], "}"}], ",", 
+    RowBox[{"PlotRange", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"All", ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "3"}], "}"}]}], "}"}]}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tlo", "=", 
+   RowBox[{"ContourPlot", "[", 
+    RowBox[{
+     RowBox[{"nn", "[", 
+      RowBox[{"x", ",", "y"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{
+        RowBox[{"-", "ro"}], "-", 
+        RowBox[{"2", "aa"}]}], ",", 
+       RowBox[{"ro", "+", 
+        RowBox[{"2", "aa"}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", 
+       RowBox[{
+        RowBox[{"-", "ro"}], "-", 
+        RowBox[{"2", "aa"}]}], ",", 
+       RowBox[{"ro", "+", 
+        RowBox[{"2", "aa"}]}]}], "}"}], ",", 
+     RowBox[{"Contours", "\[Rule]", "20"}], ",", 
+     RowBox[{"PlotPoints", "\[Rule]", "39"}]}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.8832184207081547`*^9, 3.883218481689146*^9}, {
+  3.883218514547965*^9, 3.883218519912907*^9}}],
+
+Cell["Rysunek 7.22", "Text",
+ CellChangeTimes->{{3.883217495625*^9, 3.8832174989702907`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"w", "=", "9"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"An", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Xi]", "=", 
+   RowBox[{"8", "/", "10"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Ay", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Ax", "=", 
+   RowBox[{"Ay", 
+    SqrtBox[
+     RowBox[{"1", "-", 
+      SuperscriptBox["\[Xi]", "2"]}]]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"P", "=", "0.1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Tau]", "=", "0.2"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Lambda]", "=", "400"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Lambda]1", "=", "400"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Lambda]2", "=", "720"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"n1", "=", 
+   RowBox[{"1", "+", 
+    RowBox[{"P", 
+     RowBox[{"(", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"2", "An"}], 
+        RowBox[{"2", "+", 
+         FractionBox[
+          SuperscriptBox[
+           RowBox[{"(", "Ay", ")"}], "2"], 
+          SuperscriptBox["Ax", "2"]], "+", 
+         FractionBox[
+          SuperscriptBox["y", "2"], 
+          SuperscriptBox["Ay", "2"]]}]], "+", 
+       FractionBox[
+        RowBox[{"2", "An"}], 
+        RowBox[{"2", "+", 
+         FractionBox[
+          SuperscriptBox[
+           RowBox[{"(", "Ay", ")"}], "2"], 
+          SuperscriptBox["Ax", "2"]], "+", 
+         FractionBox[
+          SuperscriptBox["y", "2"], 
+          SuperscriptBox["Ay", "2"]]}]], "+", 
+       RowBox[{"4", 
+        SuperscriptBox[
+         RowBox[{"Sin", "[", "x", "]"}], "12"]}], "+", 
+       RowBox[{"4", 
+        SuperscriptBox[
+         RowBox[{"Sin", "[", "y", "]"}], "12"]}]}], ")"}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"nn", "[", 
+    RowBox[{"x_", ",", "y_"}], "]"}], "=", 
+   RowBox[{"n1", "+", 
+    FractionBox[
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "n1"}], ")"}], "\[Tau]", 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["\[Lambda]", "2"], "-", 
+        SuperscriptBox["\[Lambda]1", "2"]}], ")"}], 
+      SuperscriptBox["\[Lambda]2", "2"]}], 
+     RowBox[{
+      SuperscriptBox["\[Lambda]", "2"], 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["\[Lambda]1", "2"], "-", 
+        SuperscriptBox["\[Lambda]2", "2"]}], ")"}]}]]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tlo", "=", 
+   RowBox[{"ContourPlot", "[", 
+    RowBox[{
+     RowBox[{"nn", "[", 
+      RowBox[{"x", ",", "y"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"-", "w"}], ",", "w"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", 
+       RowBox[{"-", "w"}], ",", "w"}], "}"}], ",", 
+     RowBox[{"Contours", "\[Rule]", "20"}], ",", 
+     RowBox[{"PlotPoints", "\[Rule]", "50"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{"nn", "[", 
+    RowBox[{"x", ",", "0"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", 
+     RowBox[{"-", "w"}], ",", "w"}], "}"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"All", ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "3"}], "}"}]}], "}"}]}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Plot3D", "[", 
+  RowBox[{
+   RowBox[{"nn", "[", 
+    RowBox[{"x", ",", "y"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", 
+     RowBox[{"-", "w"}], ",", "w"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"y", ",", 
+     RowBox[{"-", "w"}], ",", "w"}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{
+  3.8832168372249656`*^9, {3.883218548833885*^9, 3.8832185768918962`*^9}}],
+
+Cell["Rysunek 7.26", "Text",
+ CellChangeTimes->{{3.8832176648044167`*^9, 3.8832176696569767`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{"1", "+", 
+    RowBox[{
+     RowBox[{"1", "/", "3"}], 
+     RowBox[{"(", 
+      RowBox[{
+       FractionBox["1", "2"], "+", 
+       RowBox[{
+        FractionBox["1", "2"], 
+        FractionBox[
+         RowBox[{"ArcTan", "[", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"x", "-", "1"}], ")"}], "/", "0.05"}], "]"}], 
+         RowBox[{"ArcTan", "[", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"0", "-", "1"}], ")"}], "/", "0.05"}], "]"}]]}]}], 
+      ")"}]}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", 
+     RowBox[{"-", "2"}], ",", "2"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.882702115157875*^9, 3.8827022790099397`*^9}, {
+  3.882702309592094*^9, 3.8827023112887774`*^9}, {3.882704249982306*^9, 
+  3.882704267157133*^9}, {3.8832176481504536`*^9, 3.883217649620537*^9}}]
+},
+WindowSize->{759, 821},
+WindowMargins->{{-15, Automatic}, {Automatic, 45}},
+Magnification:>0.9 Inherited,
+FrontEndVersion->"10.1 for Microsoft Windows (64-bit) (March 23, 2015)",
+StyleDefinitions->FrontEnd`FileName[{"Report"}, "StandardReport.nb", 
+  CharacterEncoding -> "WindowsEastEurope"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 277, 5, 28, "Text"],
+Cell[838, 27, 118, 2, 37, "Input"],
+Cell[959, 31, 93, 1, 28, "Text"],
+Cell[1055, 34, 3459, 109, 415, "Input"],
+Cell[4517, 145, 93, 1, 28, "Text"],
+Cell[4613, 148, 8176, 260, 803, "Input"],
+Cell[12792, 410, 93, 1, 25, "Text"],
+Cell[12888, 413, 3090, 98, 384, "Input"],
+Cell[15981, 513, 94, 1, 25, "Text"],
+Cell[16078, 516, 3256, 105, 384, "Input"],
+Cell[19337, 623, 98, 1, 25, "Text"],
+Cell[19438, 626, 3008, 99, 384, "Input"],
+Cell[22449, 727, 96, 1, 25, "Text"],
+Cell[22548, 730, 3372, 107, 381, "Input"],
+Cell[25923, 839, 93, 1, 25, "Text"],
+Cell[26019, 842, 3744, 120, 391, "Input"],
+Cell[29766, 964, 98, 1, 25, "Text"],
+Cell[29867, 967, 887, 26, 56, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,39 @@
+\indent Z postaci równania eikonału występuje zależność, ruch cząstki określony jest za pomocą równania Hamiltona-Jacobiego.
+Funkcja działania $S(q,t)$ względem czasu jest związana z funkcją Hamiltona zależnością \cite{TeoriaPolaLifszyc}:
+$$\frac{\partial S}{\partial t}+{\cal H}\!\br{q,p,t}=0.$$
+A jej pochodne cząstkowe względem współrzędnych są równe pędom
+%\cmmt{w poniższym równaniu Jacobiego nawias koniecznie musi byc większy -- pamiętać o tym w każdym podobnym przypadku}
+%
+%\cmmt{Równania to też część zdania -- należy stawiać kropki gdzie trzeba}
+%
+$$\frac{\partial S}{\partial t}+{\cal H}\!\br{q_{1},...,q_{s};\frac{\partial S}{\partial q_{1}},...,\frac{\partial S}{\partial q_{s}};t}=0.$$
+%
+Jest to równanie różniczkowe cząstkowe pierwszego rzędu drugiego stopnia, równanie Hamiltona-Jacobiego.
+%\cmmt{wszędzie za instrukcją {\it end{equation}} wyrzucić znak nowej linii \verb"\\" bardzo to niedobrze wygląda -- zbyt duże odstępy }
+%
+W naszym przypadku zapisujemy działanie S to w postaci związków:
+%
+$$\vec{p}=\frac{\partial S}{\partial \vec{r}},\qquad H=-\frac{\partial S}{\partial t}.$$
+%
+Dla cząstki słuszne są równania Hamiltona :
+%
+$$\dot{\vec{p}}=-\frac{\partial {\cal H}}{\partial \vec{r}},\qquad \vec{v}=\dot{\vec{r}}=\frac{\partial {\cal H}}{\partial \vec{p}}.$$
+%
+
+\noindent Biorąc pod uwagę falę będącą superpozycją fal monochromatycznych o częstościach zmieniających się w pewnym niedużym przedziale i zajmujących pewien skończony obszar przestrzeni,~pęd i energia paczki falowej przekształcają się przy zmianie układu odniesienia odpowiednio jak wektor falowy i częstość. Można ustalić analogiczną zasadę w przypadku optyki geometrycznej do zasady najmniejszego działania w mechanice. Zastępując funkcję Hamiltona częstością, a pęd wektorem falowym $\vec{k}$, mogliśmy za funkcję Langrange’a w optyce geometrycznej przyjąć wyrażenie $\sprod{\vec{k}}{\frac{\partial \omega}{\partial \vec{k}}}-\omega$. Jednak wyrażenie będzie równe zero, niemożliwość wprowadzenia funkcji Langrange’a dla promieni wynika również bezpośrednio stąd, że rozchodzenie się promieni jest analogiczne do ruchu cząstek z masą równą zeru. Jeśli fala ma określoną stałą częstość $\omega$, to zależność jej pola od czasu określona jest mnożnik postaci $e^{-i\omega t}$. Dlatego dla eikonału takiej fali możemy przyjąć:
+%
+$$\psi=-\omega t + \psi_{0}\!\br{x,y,z},$$
+%
+gdzie $\psi_{0}$ jest funkcją samych współrzędnych. Równanie eikonału przebiera teraz postać:
+%
+$$\!\br{\grad{\psi_{0}}}^{2}=\frac{\omega^{2}}{c^2}.$$
+%
+Promienie w każdym punkcie powierzchni falowej, która jest powierzchnia stałego eikonału,~w~każdym punkcie są określone przez gradient $\nabla \psi_{0}$. Całkowanie przebiega po torze cząstki pomiędzy dwoma punktami, gdzie zakłada się pęd jako funkcję energii i współrzędnych cząstek. Dla promieni jest opisana zasada Fermata:
+%
+$$\delta \psi=\delta \int\!\! \sprod{\vec{k}}{d\vec{l}}=0.$$
+%
+W próżni $\vec{k}=\frac{\omega}{c}\vec{n}$, gdzie $\vec{n}$ jest wektorem jednostkowym kierunkiem prostopadłym do powierzchni stałej fazy (opisujący kierunek rozchodzenia się fali), otrzymujemy $(\sprod{\vec{n}}{d\vec{l}}=dl)$:
+%
+$$\delta \int\!\! dl = 0,$$
+%
+co odpowiada prostoliniowemu rozchodzeniu się promieni.

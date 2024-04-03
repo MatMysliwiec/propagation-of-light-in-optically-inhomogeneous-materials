@@ -1,0 +1,37 @@
+
+%\cmmt{jeśli już uznam ,że jakiś podrozdział został zakończony, wóczas wprowadzę niewielkie poprawki/uściślenia na bazie Pańskiego tekstu -- zmiany będą widoczne jak poniżej, ale wszystkie znikną w ostatecznej wersji przy pomocy redefinicji pewnych komend}
+%\quad \quad 
+%\cmmt{kwetię pierwszego wcięcia wprowadzanego tu komendą quad quad ustala sie globalnie a nie lokalnie w każdym przypadku}
+
+\indent Pod nieobecność źródeł pola, równania Maxwella opisują pole elektromagnetyczne występujące w próżni, to znaczy, dla znikającej gęstości ładunku ($\varrho$=0) i znikających prądów ($\vec{j}=0$) otrzymujemy następujące równania
+\begin{equation}
+\begin{aligned}
+&\rot{E}=-\frac{1}{c}\frac{\partial \vec{B}}{\partial t},&\quad   &\div{B}=0,&\\
+&\rot{B}=\frac{1}{c}\frac{\partial \vec{E}}{\partial t},&\quad &\div{E}=0,&
+\end{aligned}
+\end{equation}
+zwane próżniowymi równaniami Maxwella. Należy tu zaznaczyć, że w zagadnieniach pól e\-le\-ktro\-ma\-gne\-ty\-cznych w ośrodkach materialnych pojawiają się mikroskopowe źródła (jak ładunki,~prądy molekularne, dipole magnetyczne itd.) indukowane lub występujące na stałe w~materiale ośrodka, do opisu których wprowadza się wektory indukcji elektrycznej $\vec{D}$  i natężenia pola magnetycznego $\vec{H}$ (odpowiadających  wektorom polaryzacji oraz magnetyzacji ośrodka) powiązane z wektorem natężenia pola elektrycznego $\vec{E}$ i wektorem indukcji magnetycznej $\vec{B}$ od\-po\-wie\-dni\-mi równaniami materiałowymi, nawet gdy nie ma zewnętrznych prądów i ładunków. Ważnym wnioskiem z równań próżniowych jest to, że ich  
+rozwiązania są różne od zera, co wskazuje na możliwość istnienia pól elektromagnetycznych w obszarach przestrzeni bez występowania ładunków. Pola tego rodzaju propagujące się w przestrzeni, muszą koniecznie być polami zmiennymi w czasie, ale i w obszarach próżni między ustalonymi źródłami mogą występować pola statyczne opisane funkcjami harmonicznymi, które też spełniają próżniowe równania Maxwella przy zadanych warunkach brzegowych.
+
+Matematyczna struktura powyższych równań pozwala (w ujęciu przestrzennym z wyróźnionym czasem) opisać pola fizyczne $\vec{E}$ oraz $\vec{B}$ przy pomocy potencjału wektorowego $\vec{A}$ oraz funkcji skalarnej $\Phi$, kosztem pewnej niejednoznaczności związanej z symetrią cechowania elektromagnetyzmu.\footnote{W języku potencjałów istnieje jeszcze ujęcie relatywistyczne (tzn bez wyróżnionego czasu), w którym pola $\vec{A}$ oraz $\Phi$ wchodzą w skład potencjału czterowektorowego $A_{\mu}$.}
+W tym ujęciu, do wyznaczenia równania falowego wystarczy określenie potencjału wektorowego fal elektromagnetycznych założywszy warunek dodatkowy $\Phi=0$. Wówczas
+%
+$$\vec{E}=-\frac{1}{c}\frac{\partial \vec{A}}{\partial t},\qquad \vec{B}=\rot{A}.$$    
+%
+Podstawiając wyrażenia do pierwszego opisanego równania Maxwella, otrzymujemy
+%
+$$\rot{\br{\rot{A}}}=-\Delta\vec{A}+ \grad{\br{\div{A}}}=-\frac{1}{c^2}\frac{\partial^2 \vec{A}}{\partial t^2}.$$
+%
+Następnie, ujednoznacznienie potencjału wektorowego $\vec{A}$ osiągamy w odpowiednim cechowaniu,~dodając do $\vec{A}$ niego gradient pewnej funkcji niezależnej od czasu (bez zmiany $\Phi$).  W szczególności, potencjał fali elektromagnetycznej można tak wybrać, aby
+%
+$$\div{A}=0.$$
+%
+Podstawiając wektor natężenia pola elektrycznego z do jego gradientu przyrównywanego do zera,~mamy
+%
+$$\div{}\!\br{\!\frac{\partial \vec{A}}{\partial t}\!}=\frac{\partial}{\partial t}\br{\div{A}}=0,$$
+%
+czyli gradient potencjału pola elektromagnetycznego jest funkcją samych tylko współrzędnych. Równanie falowe przybiera postać:
+%
+$$\Delta\vec{A}-\frac{1}{c^2}\frac{\partial^2 \vec{A}}{\partial t^2}=0.$$
+%
+Jest to właśnie równanie określające potencjały fal elektromagnetycznych \cite{TeoriaPolaLifszyc}.

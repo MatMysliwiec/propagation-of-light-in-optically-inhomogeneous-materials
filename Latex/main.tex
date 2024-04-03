@@ -1,0 +1,169 @@
+%\documentclass[a4paper,12pkt,draft]{report}
+\documentclass[a4paper,12pkt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\usepackage[OT4]{fontenc}
+\usepackage{pdfpages}
+\usepackage[MeX]{polski}
+\usepackage{graphicx}
+\usepackage[square,numbers]{natbib}
+\usepackage{csquotes}
+\usepackage{listings}
+\usepackage{float}
+\lstset{
+  basicstyle=\ttfamily,
+  mathescape
+}
+\renewcommand*\contentsname{SPIS TREŚCI}
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\input{auxlatex.tex}
+
+\begin{document}
+\baselineskip=15pt
+
+
+\input{frontpage/frontpage.tex}
+\includepdf[pages=-, scale=1.0, offset=.45in -1.0in]{frontpage/Oswiadczenie_podpisane.pdf}
+\newpage
+\thispagestyle{empty}
+\begin{center}
+{\bf Streszczenie}
+\end{center}
+Optyka geometryczna jest teorią opierającą się na rozprzestrzenianiu się światła w postaci promieni, wyjaśniającą powstawanie obrazów po odbiciu bądź załamaniu na ośrodkach optycznych. W~pracy jest wyjaśnione w jaki sposób opisywane jest światło w oparciu o równanie falowe uzyskane z rozważań Maxwella, a następnie równanie eikonału prowadzące w granicy wysokich częstości do zasady Fermata rozchodzenia się promieni. Jednak niejednorodność optyczna jest szerokim pojęciem obejmującym nie tylko samo rozpraszanie promieni świetlnych w ośrodkach, ale także odbijanie oraz załamywanie ich torów, co skutkuje zmianą kierunku promienia pod wpływem gradientu współczynnika załamania.  Rozwiązania zredukowanego układu równań różniczkowych promienia świetlnego wynikających z zasady wariacyjnej Fermata można uzyskać przy pomocy integratora opartego o metodę Rungego-Kutty w specjalnie napisanym do tego celu programie. Przy pomocy tego programu można wyznaczyć trajektorię promieni w zamodelowanych układach optycznych np.: w soczewce wypukłej lub wklęsłej, w układach złożonych z różnych typów ośrodków, w światłowodach itp. Uwzględniając dodatkowo prawo Cauchy’ego opisujące w dobrym przybliżeniu dyspersję współczynnika załamania w zależności od długości fali promienia optycznego, otrzymujemy kompletne narzędzie pozwalające badać propagację światła w ośrodku niejednorodnym. Wyjaśnienie działania programu do symulacji rozprzestrzeniania się promieni świetlnych oraz  pokazanie jego działania na różnych zaprogramowanych przykładach stanowi główną część pracy.\\
+Słowa kluczowe: przybliżenie optyki geometrycznej, zagadnienia wariacyjne, metody Rugego-Kutty, propagacja światła
+
+\begin{center}
+{\bf Abstract}
+\end{center}
+Geometrical optics is a theory based on the propagation of light in the form of rays, explaining the formation of images after reflection or refraction in optical media. In this diploma thesis, it is explained how light is described based on the wave equation derived from Maxwell's considerations and then the resulting eikonal equation leading in the high frequency limit to Fermat's principle. However, optical inhomogeneity is a broad concept encompassing not only the mere scattering of light rays in media, but also the reflection and refraction of their paths, resulting in a change of ray direction under the influence of the  gradient of the refractive index.  Solutions of the reduced system of differential equations of a light ray resulting from the Fermat variational principle can be obtained with the use of a numerical integrator based on the Runge-Kutta method implemented in a program written for this purpose. With the help of this program it is possible to determine the trajectory of rays in the modelled optical systems, e.g.: passing through a convex or concave lens, moving in systems composed of different types of media, in optical fibres, etc. Additionally, taking into account the Cauchy law describing to a good approximation the dispersion of the refractive index depending on the wavelength of the optical ray, we obtain a complete tool allowing us to study the propagation of light in an inhomogeneous medium. The explanation of how the program for the simulation of the propagation of light rays works and the presentation of the results obtained for various programmed examples is the main part of this diploma thesis.\\
+Keywords: geometrical optics approximation, variational problems, Ruge-Kutta methods, the propagation
+of light
+\newpage
+\pagenumbering{Roman}
+\tableofcontents
+
+\newpage
+\pagenumbering{arabic}
+
+\chapter{Wstęp i cel pracy}
+
+\input{tekst/wstep.tex}
+
+\chapter{Materiały niejednorodne optycznie}
+
+\input{tekst/materialy.tex}
+
+\chapter{Przybliżenie optyki geometrycznej}
+
+\indent Światło jest zjawiskiem elektromagnetycznym, a jego propagację można opisać za pomocą dwóch wzajemnie sprzężonych wektorów: pola elektrycznego i~magnetycznego. W praktyce wiele zjawisk można opisać używając tylko jednej z~tych dwóch wielkości wektorowych. Stąd takie uproszczenie prowadzi do teorii skalarnej, w~której światło traktowane jest jako funkcja skalarna, a powstała w~ten sposób teoria nosi nazwę optyki falowej. Gdy światło rozchodzi się wokół obiektów znacznie większych niż długość jego fali, falowa natura światła może się nie ujawnić i~jego rozchodzenie się można po prostu opisać za pomocą promieni, a odpowiadającą temu teorię nazywa się optyką geometryczną. Wszystkie te teorie są teoriami klasycznymi, ale istnieją inne zjawiska świetlne o~charakterze kwantowo-mechanicznym, których nie można wyjaśnić w~kategoriach klasycznej teorii elektromagnetycznej.
+
+\section{Jednostki i notacja w pracy}
+
+\input{tekst/konwencje.tex}
+
+\section{Równanie falowe}
+
+\input{tekst/rownania_falowe.tex}
+
+\section{Powierzchnia falowe}
+
+\input{tekst/powierzchnie.tex}
+
+\section{Równanie eikonału}
+
+\input{tekst/rownanie_eikonalu.tex}
+
+\section{Zasada Fermata}
+
+\input{tekst/zfernata.tex}
+
+\chapter{Zagadnienie wariacyjne Fermata w ośrodku niejednorodnym}
+
+\indent Rachunek wariacyjny jest ważny w~wielu problemach optymalizacyjnych i~naukach obliczeniowych, zwłaszcza w~formułowaniu metod elementów skończonych. Rachunek wariacyjny zajmuje się wyznaczaniem wartości stacjonarnych funkcjonału (z~reguły minimalnej jego wartości). 
+Funkcjonał można zdefiniować jako funkcję kilku innych funkcji. Stąd rachunek wariacyjny może być stosowany do rozwiązywania problemów związanych z~optymalizacją trajektorii. Sam początek rozwoju tego zagadnienia zaczął się od definiowania przez Newtona zasad dynamiki,~wraz z~wprowadzeniem problemu brachistochronego przez J. Bernoulliego \cite{elsgolc2012calculus}, by później ważny wkład wnieśli Euler, Lagrange, d’Alembert i~Hamilton \cite{dacorogna2014introduction,goldstine2012history,giaquinta2013calculus}. Rachunek wariacyjny jest potężną metodą rozwiązywania problemów w~wielu dziedzinach nauki i~techniki, takich jak statyka i~dynamika ciał sztywnych, ogólna sprężystość, drgania, optyka, przede wszystkim stanowi fundament konstrukcji modeli fizycznych rzeczywistości.
+
+\section{Ogólne zagadnienie wariacyjne. Równanie\\ Lagrange'a--Eulera}
+
+\input{tekst/rownanie_E-L.tex}
+
+\section{Prawo Snelliusa, przykład analityczny}
+
+\input{tekst/prawo_snella.tex}
+\newpage
+\section{Wyprowadzenie zredukowanych równań promieni świe\-tlnych w ośrodku niejednorodnym. Przypadek trajektorii płaskich (beztorsyjnych)}
+\input{tekst/zredukowane.tex}
+
+\section{Sprowadzenie układu równań ruchu drugiego rzędu do postaci kanonicznej $Y'(x)=F(x,Y(x))$}
+\label{s:spro_ukl}
+\input{tekst/ukladydynamiczne.tex}
+
+\chapter{Wyprowadzenie formuły metody Rungego-Kutty drugiego i trzeciego rzędu. Metoda całkowania Bogackiego-Shampiege'a RK3(2) z adaptowanym krokiem}
+
+\indent Problemy, które można było rozwiązać, stały się poważniejsze i~bardziej złożone, automatyczne monitorowanie błędów i~kontrola wielkości kroku stały się nie tylko potrzebne, ale wręcz konieczne. Postęp w~dziedzinie metod Runge-Kutta oraz główny cel używania tych metod, czyli do produkcji wydajnego i~niezawodnego programu do analizy równań różniczkowych, stał się czynnikiem napędzającym prace badawcze. Oprócz zastosowania metod Runge-Kutta w~ich tradycyjnej roli rozwiązujących równania różniczkowe, podobne rodzaje problemów wartości początkowej są możliwe do rozwiązania metodami odpowiednio dostosowanymi do bardziej ogólnej klasy problemów. Przykładami tych problemów są cząstkowe równania różniczkowe, całki Volterry,~równania różniczkowo-algebraiczne i~stochastyczne równania różniczkowe. Krótko mówiąc,~badania nad metodami Runge-Kutta są ważnym przedsięwzięciem, ponieważ angażują pracę badaczy w~wielu dziedzin: matematyki, informatyki, chemii, fizyki.
+
+\input{tekst/metodaRK.tex}
+
+\chapter{Kod integratora numerycznego}
+
+\input{tekst/kod.tex}
+
+\chapter{Zastosowanie do poszukiwania torów promieni świetlnych. Wyniki dla ośrodków z dyspersją współczynnika załamania}
+
+\input{tekst/zastosowanie.tex}
+
+\chapter{Podsumowanie}
+
+\indent Praca porusza zagadnienia związane z~propagacją promieni świetlnych, uzyskiwanie równań ruchu toru promienia świetlnego oraz ich zredukowania, teorii optyki geometrycznej potrzebnej do zrozumienia w~jaki sposób promień rozchodzi się oraz oddziałuje w~ośrodkach niejednorodnych optycznie oraz końcowo przedstawienia symulacji przebiegu wykorzystując połączenie metody drugiego i~trzeciego rzędu Rungego-Kutty nazwana metodą Bogackiego-Shampiege’a RK3(2) z~adaptowanym krokiem, który automatycznie dobiera jego wartość przy starcie programu oraz kontroluje jego wielkość. Do analizy tego zagadnienia wykorzystano program komputerowy napisany w~języku Mathematica, a następnie skompilowany w~programie Wolfram Mathematica 10.0. Przy symulacjach wizualizacyjnych został napisany własny integrator numeryczny w~oparciu o~opisaną wcześniej teorię. Przeprowadzono liczne symulacje trajektorii promieni o~różnych długościach fal (o~różnych barwach). Uzyskano obrazy wykorzystując różne układy optyczne: model światłowodowy, soczewki wypukłej oraz uzyskane eksperymentalnie układy będące połączeniem różnych modeli. W symulacjach występują wyraźne załamania oraz odbicia w~zaprojektowanych układzie optycznym, zależne od wprowadzanych warunków początkowych, położeniu początkowym oraz nachyleniu promienia. W dużej mierze, promień reagował na wartość gradientu współczynnika załamania w~punkcie na zaprogramowanym tle. Przy wysokich wartościach następowało załamywanie podczas przechodzenia w~głąb ośrodka, natomiast sytuacja odwrotna, czyli odbicie promienia było widoczne przy osiąganiu przez promień pól o~niskiej wartości gradientu. Wartości współczynnika załamania były rozmieszczane w~postaci układu pól jak np.~w~soczewkach lub strukturach, gdzie na brzegach występuje wysoki gradient jak np. w~światłowodach czy kropli wodzie. Także wykazano pod jakimi kątami nachylenia następuje przebicie promienia przez barierę w~postaci wysokiego gradientu współczynnika, dobrze przedstawione w~przykładzie z krzywoliniowym światłowodem. Podsumowując podstawowym problemem teorii propagacji światła w~układach optycznych, w~soczewkach, w~układach soczewek, w~kroplach wody czy w~światłowodach polega na opisie mechanizmu transmisji światła, w~którym energia pola elektromagnetycznego pozostaje zasadniczo ograniczona do wnętrza struktury. W szczególnym przypadku propagacji w ośrodkach jednorodnych promienie te składają się z~odcinków linii prostych, gdzie w rzeczywistości taki opis jest tylko przybliżeniem.
+
+%\bibliographystyle{plain}
+%\bibliography{bibliography.bib}
+
+\begin{thebibliography}{25}
+\bibitem{huggins1999physics2000} E. R. Huggins. Physics2000. Moose Mountain Digital Press, 1999.
+\bibitem{debieu2013structural} O. Debieu, R. P. Nalini, J. Cardin, X. Portier, J. Perri`ere, and F. Gourbilleau. Structural and optical characterization of pure si-rich nitride thin films. Nanoscale research letters, 8(1):1–13, 2013.
+\bibitem{bovard1990rugate} B. G. Bovard. Rugate filter design: the modified fourier transform technique. Applied Optics, 29(1):24–30, 1990. 
+\bibitem{kusy1976structure} A. Kusy. On the structure and conduction mechanism of thick resistive films. Thin Solid
+Films, 37(3):281–302, 1976.
+\bibitem{niklasson1985noble} G. Niklasson and C. Granqvist. Noble-metal-based transparent infrared reflectors: Improved performance caused by nonhomogeneous film structure. Applied physics letters, 46(8):713–715, 1985.
+\bibitem{smith1985surface} G. Smith, R. McPhedran, and G. Derrick. Surface structure and the optical properties of black chrome. Applied Physics A, 36(4):193–204, 1985.
+\bibitem{missori2004optical} M. Missori, M. Righini, and S. Selci. Optical reflectance spectroscopy of ancient papers with discoloration or foxing. Optics communications, 231(1-6):99–106, 2004.
+\bibitem{missori2006modifications} M. Missori, C. Mondelli, M. De Spirito, C. Castellano, M. Bicchieri, R. Schweins, G. Arcovito, M. Papi, and A. C. Castellano. Modifications of the mesoscopic structure of cellulose in paper degradation. Physical review letters, 97(23):238001, 2006.
+\bibitem{katz2002introduction} M. Katz. Introduction to geometrical optics. World scientific, 2002.
+\bibitem{TeoriaPolaLifszyc} D. L. Laudau and J. Lifszyc. Teoria pola. PWN, 2009.
+\bibitem{elsgolc2012calculus} L. D. Elsgolc. Calculus of variations. Courier Corporation, 2012.
+\bibitem{dacorogna2014introduction} B. Dacorogna. Introduction to the Calculus of Variations. World Scientific Publishing Company, 2014.
+\bibitem{goldstine2012history} H. H. Goldstine. A History of the Calculus of Variations from the 17th through the 19th Century, volume 5. Springer Science and Business Media, 2012.
+\bibitem{giaquinta2013calculus} M. Giaquinta and S. Hildebrandt. Calculus of variations II, volume 311. Springer Science and Business Media, 2013.
+\bibitem{rojas2014straight}  R. Rojas. The straight line, the catenary, the brachistochrone, the circle, and fermat. arXiv preprint arXiv:1401.2660, 2014.
+\bibitem{gregoryundersen} https://gregorygundersen.com/blog/2020/05/10/euler-lagrange/ sprawdzona w dniu 9.01.2022
+\bibitem{gregschool} https://www.gregschool.org/articles-page-3/2017/10/30/derivation-of-snells-law-a8sne sprawdzona w dniu 10.01.2022
+\bibitem{AStar1963} A. Staruszkiewicz. Gravitation theory in three-dimensional space. Acta Phys. Polonica, Vol: 24:735–740, 12 1963.
+\bibitem{bogacki19893} P. Bogacki and L. F. Shampine. A 3 (2) pair of runge-kutta formulas. Applied Mathematics Letters, 2(4):321–325, 1989.
+\bibitem{ralston1962runge} A. Ralston. Runge-kutta methods with minimum error bounds. Mathematics of computation, 16(80):431–437, 1962.
+\bibitem{born2013principles} M. Born and E. Wolf. Principles of optics: electromagnetic theory of propagation, interference and diffraction of light. Elsevier, 2013.
+\bibitem{Sultanova2013} N. G. Sultanova, S. N. Kasarova, and I. D. Nikolov. Characterization of optical properties of optical polymers. Optical and Quantum Electronics, 45(3):221–232, Mar 2013.
+\bibitem{malitson1965interspecimen} I. H. Malitson. Interspecimen comparison of the refractive index of fused silica. Josa, 55(10):1205–1209, 1965.
+\end{thebibliography}
+
+\includepdf[pages=-, scale=1]{grafika/Kod/Row_zageszcz.pdf}
+
+\includepdf[pages=-, scale=1]{grafika/Kod/Socz_wypukla.pdf}
+
+\includepdf[pages=-, scale=1]{grafika/Kod/Ukl_socz.pdf}
+
+\includepdf[pages=-, scale=1]{grafika/Kod/Socz_zakrzyw.pdf}
+
+\includepdf[pages=-, scale=1]{grafika/Kod/Swiatlowod.pdf}
+
+\includepdf[pages=-, scale=1]{grafika/Kod/Krata.pdf}
+
+\includepdf[pages=-, scale=1]{grafika/Kod/Kropla_wody.pdf}
+
+\includepdf[pages=-, scale=1]{grafika/Kod/Profil_wsp.pdf}
+
+\includepdf[pages=-, scale=1]{grafika/Kod/Oscy_harm.pdf}
+
+\end{document}

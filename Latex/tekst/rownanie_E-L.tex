@@ -1,0 +1,97 @@
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.75\textwidth,trim={0 1.5cm 0 1.5cm},clip]{grafika/Rys1.jpg}
+    \caption{\label{fig:Minimalizacja} Krzywe ilustrujące rozwiązanie dla różnych problemów minimalizacji, (1) minimalizacja drogi, (2) minimalizacja energii, (3) minimalizacja czasu, (4) znalezienie ekstremum funkcjonału}
+\end{figure}
+\indent Do zrozumienia ogólnego znaczenia zagadnienia wariacyjnego zostaną przedstawione problemy związane z minimalizacją, zaczynając od przypadku {\bf A}, minimalizacji ścieżki. Załóżmy, że mamy dwa punkty, które nazywamy $A(x_1,y_1)$ i $B(x_2,y_2)$. Jeśli spróbujemy zminimalizować odległość,~czyli znaleźć najkrótszą drogę łączącą nasze dwa punkty to wyrysujemy prostą linię,~która przybiera postać jak krzywa (1) na rysunku \figref{fig:Minimalizacja}. Długość te krzywej jest wyznaczana przez całkę
+%
+$$D = \int\limits_{x_1}^{x_2}\!\! \ud{s}.$$
+%
+\newpage
+Z twierdzenia Pitagorasa:
+%
+$$\ud{s}^2 = \ud{x}^2 + \ud{y}^2 = \ud{x}^2 \sq{1+\!\left(\frac{\ud{y}}{\ud{x}}\right)^{\!\!2}}\quad \Rightarrow\quad \ud{s} = \sqrt{1+y'^2} \ud{x},$$ gdzie $y':= \frac{\ud{y}}{\ud{x}}$, 
+%
+ostatecznie otrzymujemy:
+%
+$$\int\limits_{x_1}^{x_2}\!\!\ud{s} \equiv D[y]  = \int\limits_{x_1}^{x_2}\!\!\sqrt{1+y'^2} \ud{x}.$$
+%
+
+ \noindent {\bf B. Krzywa łańcuchowa.} Jako kolejny przykład zastosowania rachunku wariacyjnego analizujemy problem krzywej łańcuchowej. W jednorodnym polu grawitacyjnym o~wartości przyspieszenia grawitacyjnego $g$,~zawieszamy nierozciągliwy łańcuch jednorodny (o~stałej gęstości $\rho$) na dwóch końcach w punktach $A(x_1,y_1)$ i $B(x_2,y_2)$. Chcemy zminimalizować całkowitą energie potencjalną łańcucha,~która jest zobrazowana krzywą (2) na rysunku \figref{fig:Minimalizacja}. Fragment łańcucha o~długości $ds$ ma masę $dm = \rho ds$,~gdzie $\rho$ jest gęstością masy łańcucha. W wysokość y każdego takiego fragmentu łańcucha,~długość pomnożona przez jego masę i stałą grawitacyjną $g$ jest równa energii potencjalnej segmentu. Jeśli kształt łańcucha opisany jest funkcją $y(x)$,~to energia potencjalna łańcucha jest proporcjonalna do funkcji:
+%
+$$E_p[y]=\int\limits_{x_1}^{x_2}\!\!\rho y g\, \ud{s} = \rho g \int\limits_{x_1}^{x_2}y\sqrt{1+y'^2}\, \ud{x}.$$
+%
+
+\noindent {\bf C. Zagadnienie brachistochrony.} Problem brachistochrony opisuje minimalizację czasu zsuwania się obiektu ze stanu spoczynku wzdłuż krzywej. Za przykład weźmy piłkę,~którą toczymy po zboczu z punktu $B(x_2,y_2)$ do punktu $A(x_1,y_1)$. Znajdujemy minimalny czas,~w którym piłka pokona drogę od A do B,~przy założeniu,~że spada tylko pod wpływem grawitacji. Rzeczywista forma krzywej brachistrochronicznej jest najbardziej zbliżona do krzywej “skoku narciarskiego” pokazanej w postaci krzywej (3) na rysunku \figref{fig:Minimalizacja}. Prawie pionowy spadek na początku przyspiesza piłkę bardzo szybko,~dzięki czemu jest w stanie szybciej pokonać poziomą część odległości,~aż do uzyskania największej wartości prędkości. Zmniejszenie kąta początkowego zwiększa całkowity czas,~przez spadek prędkości piłki. Prędkość $\vec{V}$ toczącej się na początku piłki jest równy $\sqrt{2gy}$ przy założeniu,~że $A=(0,0)$,~czas potrzebny na pokonanie łuku $ds$,~po przebyciu pionowego odcinku drogi,~przy tej prędkości wynosi $\frac{ds}{\sqrt{2gy}}$. Całkowity czas stoczenia jest dany wzorem:
+%
+$$T[y] = \int\limits_{x_1}^{x_2}\!\frac{\sqrt{1+y'^2}}{V}\ud{x} = \sqrt{2g}\int\limits_{x_1}^{x_2}\!\frac{\sqrt{1+y'^2}}{\sqrt{y}}\ud{x}.$$
+%
+
+\noindent Lagrangian jest różnicą pomiędzy energią kinetyczną i potencjalną układu,~który przemieszczając się z jednego czasu do drugiego. Układ podąża drogą punktów stacjonarnych względem lagrangianu,~tzn. w dowolnym momencie podąża ścieżką minimalizującą funkcjonał działania (krzywa (4) na rysunku \figref{fig:Minimalizacja}) \cite{rojas2014straight}.
+%
+$$F[y] = \int\limits_{x_1}^{x_2}\!\!\mathcal{L}\sq{x,y,y'}\ud{x}.$$
+
+Koncepcja rachunku zmienności polega na tym,~że próbujemy znaleźć drogę,~która minimalizuje funkcję,~jako że droga jest funkcją to finalnie próbujemy znaleźć funkcję,~która minimalizuje funkcję.
+%
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.75\textwidth,trim={0 3.5cm 0 1.5cm},clip]{grafika/Rys2.jpg}
+    \caption{\label{fig:RównanieLE}Problem optymalizacji funkcjonału działania}
+\end{figure}
+%
+$y(x)$ jest optymalną drogą z punktu $A(x_1,y_1)$ do $B(x_2,y_2)$. Rozważamy wszystkie drogi łączące oba punkty,~$\eta(x)$ jest dowolną funkcją właściwą,~a $\epsilon$ jest stałą,~którą parametryzujemy całą rodzinę możliwych krzywych,~które mogą być właściwym rozwiązaniem $\epsilon\eta(x)$.
+%
+\begin{equation}\label{eq:war1}\overline{y}(x)=y(x)+\epsilon\eta(x).\end{equation}
+%
+$\eta$ jest arbitralną odmianą $y(x)$, musi spełniać dwa warunki brzegowe:
+%
+$$\eta(x_1)=\eta(x_2)=0,$$
+%
+\begin{equation}\label{eq:war2}\overline{y}'(x)=y'(x)+\epsilon\eta'(x).\end{equation}
+%
+Każda z tych całek może być napisana jako funkcja funkcji ogólnych $x,y,y'$:
+%
+$$F=\int\limits_{x_1}^{x_2}\!\!f\sq{x,y(x),y'(x)}\ud{x}.$$
+%
+Jeśli ścieżka y jest optymalna i ekstremalna, to musi być punktem stacjonarnym, tzn. pochodną tej funkcji musi być zero:
+%
+$$\left.\frac{dF}{d\epsilon}\right|_{\epsilon=0}=\left.\frac{d}{d\epsilon}\right|_{\epsilon=0}\int\limits_{x_1}^{x_2}\!\!f\sq{x,\overline{y}(x),\overline{y}'(x)}\ud{x}=0$$
+%
+$$\Rightarrow \int\limits_{x_1}^{x_2}\!\!\left.\br{f\sq{x,\overline{y}(x),\overline{y}'(x)}}\right|_{\epsilon=0}\ud{x}=0.$$
+%
+$$\Rightarrow \int\limits_{x_1}^{x_2}\!\left.\left(\frac{\partial f}{\partial x} \frac{\partial x}{\partial \epsilon}+\frac{\partial f}{\partial \overline{y}}\frac{\partial \overline{y}}{\partial \epsilon}+\frac{\partial f}{\partial \overline{y}'}\frac{\partial \overline{y}'}{\partial \epsilon}\right)\right|_{\epsilon=0}\ud{x}=0.$$
+%
+Z równiania \ref{eq:war1} wyciągamy:
+\begin{equation}\label{eq:upro1}
+    \Rightarrow \frac{\partial \overline{y}}{\partial \epsilon}=\eta(x).
+\end{equation}
+Oraz z równania \ref{eq:war2}:
+\begin{equation}\label{eq:upro2}
+    \Rightarrow \frac{\partial \overline{y}'}{\partial \epsilon}=\eta '(x).
+\end{equation}
+Używamy wyprowadzeń \ref{eq:upro1}, \ref{eq:upro2} do dalszego rozwiązywania:
+%
+$$\int\limits_{x_1}^{x_2} \!\left.\left(\frac{\partial f}{\partial \overline{y}}\dot\eta+\frac{\partial f}{\partial \overline{y}'}\dot\eta '\right)\right|_{\epsilon=0}\ud{x}=0.$$
+%
+Aby dostać końcowe równanie musimy zastosować całkowanie przez części: 
+%
+$$\left.\int\limits_{a}^{b}\!\!u\ud{V}=Vu\right|_{a}^{b}-\int\limits_{a}^{b}\!\!V\ud{u}.$$
+%
+Wykorzystujemy fakt, że rozwiązanie zbliża się do dokładnego rozwiązania, gdy $\epsilon$ wyzeruje:
+%
+$$\epsilon=0 \Rightarrow \overline{y}\rightarrow y,\quad\overline{y}'=y',$$
+%
+$$\Rightarrow \left.\frac{\partial f}{\partial \overline{y}'}\eta\right|_{x_1}^{x^2}+\int\limits_{x_1}^{x_2}\!\left(\frac{\partial f}{\partial y}-\frac{\ud{}}{\ud{x}}\!\left(\frac{\partial f}{\partial y'}\right)\right)\eta \ud{x}=0.$$
+%
+Ponieważ $\eta$ jest arbitralne, wszystko musi być równe zeru.
+%
+$$\frac{\partial f}{\partial y}-\frac{\ud{}}{\ud{x}}\!\left(\frac{\partial f}{\partial y'}\right)=0.$$
+%
+Dostajemy wyprowadzone równanie Eulera-Lagrange’a \cite{gregoryundersen}. Wykorzystując powyższe równanie można znaleźć rozwiązania dla przedstawionych w tym rozdziale problemach. Rozwiązania dla poszczególnych problemów (z dokłądnością do przesunięć i wyboru stałych dowolnych) są odcinkami funkcji mających nastepującą postać:\\
+Dla {\bf A} będzie w postaci funkcji liniowej:
+$$y=ax+b.$$
+Dla {\bf B} rozwiązaniem będzie cosinus hiperboliczny:
+$$y =a \cosh(x/b).$$
+Dla {\bf C} jest to równanie cykloidy:
+$$x(\gamma)=\frac{1}{2}\frac{1}{2gC^2}(\gamma-\sin{\gamma}),$$
+$$y(\gamma)=\frac{1}{2}\frac{1}{2gC^2}(1-\cos{\gamma}).$$
